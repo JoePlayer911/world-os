@@ -2,7 +2,7 @@ import { initRandomPicker } from './random-picker.js';
 import { initVocabSystem } from './vocabulary.js';
 import { startNusantacraft } from './game/nusantacraft.js';
 import { startSpriteHunter } from './game/spritehunter.js';
-import { startMancala } from './game/mancala.js';
+import { startFragment } from './game/fragment.js';
 import { setGlobeTexture } from './globe.js';
 import { setLanguage } from './i18n.js';
 
@@ -91,14 +91,9 @@ export function initPanels() {
                 <div style="font-size: 1.1rem;">Arknights UI/UX Design</div>
             </div>
 
-            <div style="margin-bottom: 20px; border-left: 4px solid var(--text-muted); padding-left: 15px; background: rgba(255, 255, 255, 0.03); padding-top: 10px; padding-bottom: 10px;">
-                <label style="display: block; color: var(--text-muted); font-family: var(--font-scifi); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 4px; opacity: 0.8;">LOADING SEQUENCE</label>
-                <div style="font-size: 1rem;">Glider scene from <span style="font-style: italic; color: var(--accent-gold);">IMHHW</span></div>
-            </div>
-
             <div style="margin-top: 30px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; font-size: 0.8rem; color: var(--text-muted); text-align: center; border: 1px dashed rgba(255, 255, 255, 0.1); font-family: var(--font-scifi);">
-                NUSANTARA EXPLORER<br>
-                <span style="font-size: 0.7rem; opacity: 0.6;">SYSTEM VERSION 1.0.4-STABLE</span>
+                WORLD TOUR EXPLORER<br>
+                <span style="font-size: 0.7rem; opacity: 0.6;">SYSTEM VERSION 2.0.0-WORLD</span>
             </div>
         </div>
     `);
@@ -115,19 +110,15 @@ export function initPanels() {
         `);
     });
 
-    // Create Games Panel for Nusantacraft
+    // Create Games Panel — NO Mancala
     createPanel(container, 'games-panel', `<span data-i18n="panel-games">GAMES MODULE</span>`, `
         <div style="text-align: center; padding: 20px; font-family: var(--font-scifi);">
             <div style="font-size: 3rem; margin-bottom: 10px;">🎮</div>
-            <button id="btn-launch-nusantacraft" data-i18n="btn-nc-launch" style="padding: 15px 30px; font-size: 1.2rem; background: var(--accent-cyan); color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 8px; font-family: var(--font-scifi); width: 100%; margin-bottom: 15px;">NUSANTACRAFT EXPEDITION</button>
+            <button id="btn-launch-nusantacraft" data-i18n="btn-nc-launch" style="padding: 15px 30px; font-size: 1.2rem; background: var(--accent-cyan); color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 8px; font-family: var(--font-scifi); width: 100%; margin-bottom: 15px;">WORLD CRAFT EXPEDITION</button>
             
             <button id="btn-launch-spritehunter" data-i18n="btn-sh-launch" style="padding: 15px 30px; font-size: 1.2rem; background: var(--accent-gold); color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 8px; font-family: var(--font-scifi); width: 100%; margin-bottom: 15px;">SPRITE HUNTER PROTOCOL</button>
 
-            <h2 style="color: var(--accent-cyan); margin-bottom: 20px; margin-top: 30px;" data-i18n="title-mancala">TRADITIONAL MANCALA</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px;" data-i18n="desc-mancala">
-                Play the classic board game of Mancala (Congklak). Move your seeds around the board and collect more than your opponent.
-            </p>
-            <button id="btn-launch-mancala" data-i18n="btn-mancala-launch" style="padding: 15px 30px; font-size: 1.2rem; background: #fff; color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 8px; font-family: var(--font-scifi); width: 100%;">MANCALA (CLASSIC)</button>
+            <button id="btn-launch-fragment" data-i18n="btn-fr-launch" style="padding: 15px 30px; font-size: 1.2rem; background: #00f0ff; color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 8px; font-family: var(--font-scifi); width: 100%; margin-bottom: 15px;">FRAGMENT REASSEMBLER</button>
         </div>
     `);
 
@@ -138,9 +129,9 @@ export function initPanels() {
         
         const launchBtnSH = document.getElementById('btn-launch-spritehunter');
         if (launchBtnSH) launchBtnSH.addEventListener('click', startSpriteHunter);
-        
-        const launchBtnM = document.getElementById('btn-launch-mancala');
-        if (launchBtnM) launchBtnM.addEventListener('click', startMancala);
+
+        const launchBtnF = document.getElementById('btn-launch-fragment');
+        if (launchBtnF) launchBtnF.addEventListener('click', startFragment);
     }, 100);
 }
 

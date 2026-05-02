@@ -6,7 +6,7 @@ export const leftSidebarConfig = [
 ];
 
 export const rightSidebarConfig = [
-    { id: 'btn-islands', icon: '🗺️', label: 'ISLANDS', action: 'resetGlobe' },
+    { id: 'btn-places', icon: '🗺️', label: 'PLACES', action: 'resetGlobe' },
     { id: 'btn-settings', icon: '⚙️', label: 'SETTINGS', action: 'openPanel', payload: 'settings-panel' },
     { id: 'btn-archive', icon: '📚', label: 'ARCHIVE', action: 'openPanel', payload: 'archive-panel' },
     { id: 'btn-mission', icon: '🎯', label: 'MISSION', action: 'openPanel', payload: 'mission-panel' },

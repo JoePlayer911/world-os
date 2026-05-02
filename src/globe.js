@@ -17,8 +17,8 @@ export function initGlobe(containerId, onIslandSelect) {
     .atmosphereColor('#00f0ff')
     .atmosphereAltitude(0.15);
 
-  // Set initial camera position looking at Indonesia
-  globeInstance.pointOfView({ lat: -2.0, lng: 163.0, altitude: 2 }, 1000);
+  // Set initial camera position — global overview
+  globeInstance.pointOfView({ lat: 20.0, lng: 0.0, altitude: 2.5 }, 1000);
 
   // Configure auto-rotation
   globeInstance.controls().autoRotate = true;
@@ -38,13 +38,6 @@ export function initGlobe(containerId, onIslandSelect) {
       const el = document.createElement('div');
       el.className = 'marker-container';
 
-      const dot = document.createElement('div');
-      dot.className = 'marker-dot';
-      dot.style.backgroundColor = d.color;
-      dot.style.boxShadow = `0 0 10px ${d.color}`;
-
-      // Override dot pseudo-element border color via a tiny style injection or just use CSS vars.
-      // We will handle it by injecting a style directly to avoid complex CSS manipulation.
       el.innerHTML = `
         <style>
           .marker-${d.id}::after { border: 1px solid ${d.color}; }
@@ -85,7 +78,7 @@ function focusOnIsland(islandConfig) {
 
 export function resetGlobeView() {
   currentActiveIsland = null;
-  globeInstance.pointOfView({ lat: -2.0, lng: 118.0, altitude: 2 }, 1000);
+  globeInstance.pointOfView({ lat: 20.0, lng: 0.0, altitude: 2.5 }, 1000);
   globeInstance.controls().autoRotate = true;
 }
 

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Nusantara Explorer</title>
+  <title>World Tour Explorer</title>
+  <meta name="description" content="Explore the world through an interactive 3D globe with cultural dioramas, mini-games, and vocabulary." />
   <!-- Google Fonts: Orbitron for sci-fi, Inter for plain text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +20,19 @@
     <div class="warning-content">
       <div class="warning-icon">📱 ⟲ 📳</div>
       <h2 data-i18n="warning-rotate">PLEASE ROTATE DEVICE</h2>
-      <p data-i18n="warning-desc">Nusantara Explorer requires Landscape mode.</p>
+      <p data-i18n="warning-desc">World Tour Explorer requires Landscape mode.</p>
     </div>
   </div>
 
   <!-- Intro Preloader Mask -->
   <div id="cinematic-intro">
     <div id="intro-black-layer"></div>
-    <video id="intro-video" src="/assets/loading/EFMovie_19_x264.mp4" preload="auto" playsinline></video>
+    <div class="intro-globe-anim">
+      <div class="intro-globe-sphere"></div>
+    </div>
     <div class="intro-titles">
-      <h1 class="welcome-text" data-i18n="title-welcome">WELCOME TO INDONESIA</h1>
-      <p id="press-to-soar" class="hidden" data-i18n="press-to-soar">Click Anywhere to Soar</p>
+      <h1 class="welcome-text" data-i18n="title-welcome">EXPLORE THE WORLD</h1>
+      <p id="press-to-soar" data-i18n="press-to-soar">Click Anywhere to Soar</p>
     </div>
   </div>
 
@@ -41,7 +44,7 @@
     <header id="top-bar">
       <div class="logo">
         <div class="logo-icon"></div>
-        <h1 data-i18n="app-title">NUSANTARA EXPLORER</h1>
+        <h1 data-i18n="app-title">WORLD TOUR EXPLORER</h1>
       </div>
       <div class="top-stats">
         <div class="stat"><span class="label" data-i18n="label-latlng">LAT/LNG</span> <span id="stat-coord">0.00, 0.00</span></div>
@@ -63,7 +66,7 @@
     <div id="bottom-bar">
       <div class="bottom-decorator"></div>
       <div class="bottom-content">
-        <div class="bottom-header" data-i18n="label-island-info">ISLAND INFO</div>
+        <div class="bottom-header" data-i18n="label-location-info">LOCATION INFO</div>
         <h2 id="bottom-title" data-i18n="label-awaiting">Awaiting Input</h2>
         <div class="bottom-details">
           <div class="data-row">
@@ -92,7 +95,7 @@
       
       <!-- Diorama UI Overlay -->
       <button id="diorama-exit-btn" data-i18n="nav-orbit">⮜ RETURN TO ORBIT</button>
-      <div id="diorama-title">ISLAND NAME</div>
+      <div id="diorama-title">LOCATION NAME</div>
       
       <!-- Annotation Popup -->
       <div id="diorama-annotation" class="hidden">
@@ -111,7 +114,7 @@
           </div>
         </div>
         <div id="nc-victory-modal" class="hidden">
-          <h2 data-i18n="nc-victory-title">ISLAND RESTORED!</h2>
+          <h2 data-i18n="nc-victory-title">LOCATION RESTORED!</h2>
           <div class="nc-victory-buttons">
             <button id="nc-btn-playagain" data-i18n="btn-playagain">PLAY AGAIN</button>
             <button id="nc-btn-orbit" data-i18n="nav-orbit">RETURN TO ORBIT</button>
@@ -136,30 +139,23 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Mancala Game Overlay -->
-    <div id="mancala-overlay" class="hidden">
-      <div id="mancala-game-container"></div>
-      <div class="mancala-ui">
-        <button id="mancala-how-btn" data-i18n="btn-how-to-play">HOW TO PLAY</button>
-        <button id="mancala-exit-btn" data-i18n="btn-exit-game">EXIT MANCALA</button>
-      </div>
-
-      <!-- Mancala Help Modal -->
-      <div id="mancala-help-modal" class="hidden">
-        <div class="mancala-help-content">
-          <h2 data-i18n="btn-how-to-play">HOW TO PLAY</h2>
-          <ul>
-            <li data-i18n="mancala-rule-1">The game begins with seeds in each small hole.</li>
-            <li data-i18n="mancala-rule-2">Players take turns picking up all seeds from one hole and sowing them one-by-one into subsequent holes.</li>
-            <li data-i18n="mancala-rule-3">If your last seed lands in your Store (the large hole on your right), you get an extra turn.</li>
-            <li data-i18n="mancala-rule-4">If your last seed lands in an empty hole on your side, you capture that seed and all seeds in the opposite hole.</li>
-            <li data-i18n="mancala-rule-5">The game ends when all holes on one side are empty. The player with the most seeds wins.</li>
-          </ul>
-          <button id="mancala-close-help" data-i18n="btn-close-help">GOT IT</button>
+      
+      <!-- Fragment Reassembler UI Overlays -->
+      <div id="fr-ui" class="hidden">
+        <div id="fr-game-area"></div>
+        <div id="fr-bottom-panel">
+          <div class="fr-target-header" data-i18n="title-fr">FRAGMENT REASSEMBLER</div>
+          <div id="fr-status">INITIALIZING...</div>
+        </div>
+        <div id="fr-victory-modal" class="hidden">
+          <h2 data-i18n="fr-victory-title">RECONSTRUCTION COMPLETE!</h2>
+          <div class="fr-victory-buttons">
+            <button id="fr-btn-playagain" data-i18n="btn-playagain">PLAY AGAIN</button>
+            <button id="fr-btn-orbit" data-i18n="nav-orbit">RETURN TO ORBIT</button>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
   <script type="module" src="/src/main.js"></script>

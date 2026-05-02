@@ -1249,28 +1249,68 @@ nav,
   opacity: 0;
 }
 
-#cinematic-intro.intro-fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#intro-video {
+/* Animated Globe */
+.intro-globe-anim {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  pointer-events: none;
   z-index: 2;
+  transition: opacity 1s ease;
 }
 
-#intro-video.video-visible {
-  opacity: 1;
+.intro-globe-sphere {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1a6b8a, #0a2a3a 60%, #050f18);
+  box-shadow: 0 0 60px rgba(0, 240, 255, 0.3), inset -20px -20px 40px rgba(0, 0, 0, 0.6);
+  animation: globeSpin 6s linear infinite, globeGlow 3s ease-in-out infinite alternate;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-globe-sphere::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  animation: globeRing 4s linear infinite;
+}
+
+.intro-globe-sphere::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  width: 30%;
+  height: 20%;
+  background: rgba(100, 200, 100, 0.3);
+  border-radius: 40%;
+  filter: blur(8px);
+  animation: globeContinentDrift 6s linear infinite;
+}
+
+@keyframes globeSpin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes globeGlow {
+  0% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset -20px -20px 40px rgba(0, 0, 0, 0.6); }
+  100% { box-shadow: 0 0 80px rgba(0, 240, 255, 0.5), inset -20px -20px 40px rgba(0, 0, 0, 0.6); }
+}
+
+@keyframes globeRing {
+  0% { transform: rotateX(60deg) rotateZ(0deg); }
+  100% { transform: rotateX(60deg) rotateZ(360deg); }
+}
+
+@keyframes globeContinentDrift {
+  0% { left: 15%; }
+  50% { left: 55%; }
+  100% { left: 15%; }
 }
 
 .intro-titles {
@@ -1291,7 +1331,7 @@ nav,
 }
 
 #press-to-soar {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   color: var(--accent-cyan);
   font-size: clamp(1rem, 2vw, 2rem);
   letter-spacing: 5px;
@@ -1305,16 +1345,8 @@ nav,
 }
 
 @keyframes intro-pulse {
-
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-
-  50% {
-    opacity: 1;
-    text-shadow: 0 0 10px var(--accent-cyan);
-  }
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; text-shadow: 0 0 10px var(--accent-cyan); }
 }
 
 /* ---------------------------------
@@ -1481,169 +1513,137 @@ nav,
 }
 
 
+/* Mancala removed in World Tour 2.0 */
+
+
 /* ---------------------------------
-   MANCALA GAME OVERLAY
+   FRAGMENT REASSEMBLER
 --------------------------------- */
-#mancala-overlay {
+#fr-ui {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(15, 15, 20, 0.95), #000);
-  z-index: 200;
+  z-index: 105;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+#fr-game-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+#fr-bottom-panel {
+  height: 120px;
+  background: var(--bg-panel);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid var(--accent-cyan);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-#mancala-game-container {
-  width: 90%;
-  height: 80%;
-  max-width: 1200px;
-  background: #000;
-  border: 2px solid var(--accent-cyan);
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), inset 0 0 20px rgba(0, 240, 255, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Ensure Ruffle fills the container */
-#mancala-game-container ruffle-player {
-  width: 100%;
-  height: 100%;
-}
-
-.mancala-ui {
-  margin-top: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-#mancala-exit-btn {
-  background: rgba(255, 42, 42, 0.1);
-  color: #ff2a2a;
-  border: 1px solid #ff2a2a;
-  padding: 15px 40px;
-  font-family: var(--font-scifi);
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s;
-  box-shadow: 0 0 10px rgba(255, 42, 42, 0.2);
-}
-
-#mancala-exit-btn:hover {
-  background: rgba(255, 42, 42, 0.3);
-  box-shadow: 0 0 20px rgba(255, 42, 42, 0.5);
-  transform: translateY(-2px);
-}
-
-#mancala-how-btn {
-  background: rgba(0, 240, 255, 0.1);
-  color: var(--accent-cyan);
-  border: 1px solid var(--accent-cyan);
-  padding: 15px 40px;
-  font-family: var(--font-scifi);
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-#mancala-how-btn:hover {
-  background: rgba(0, 240, 255, 0.3);
-  box-shadow: var(--glow-cyan);
-  transform: translateY(-2px);
-}
-
-/* Mancala Help Modal */
-#mancala-help-modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-  z-index: 210;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
+  gap: 5px;
   pointer-events: auto;
 }
 
-.mancala-help-content {
-  background: var(--bg-panel-solid);
-  border: 1px solid var(--accent-gold);
-  padding: 40px;
-  max-width: 600px;
-  width: 90%;
-  border-radius: 8px;
-  box-shadow: 0 0 30px rgba(245, 200, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.mancala-help-content h2 {
+.fr-target-header {
   font-family: var(--font-scifi);
-  color: var(--accent-gold);
-  text-shadow: var(--glow-gold);
-  font-size: 2rem;
-  margin-bottom: 10px;
-  border-bottom: 2px solid var(--accent-gold);
-  padding-bottom: 10px;
-  text-align: left;
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  letter-spacing: 2px;
 }
 
-.mancala-help-content ul {
-  list-style: none;
-  font-family: var(--font-body);
-  line-height: 1.6;
-}
-
-.mancala-help-content li {
-  margin-bottom: 15px;
-  padding-left: 30px;
-  position: relative;
-  color: var(--text-main);
-  font-size: 1.1rem;
-}
-
-.mancala-help-content li::before {
-  content: '⮞';
-  position: absolute;
-  left: 0;
-  color: var(--accent-gold);
-}
-
-#mancala-close-help {
-  align-self: flex-end;
-  background: var(--accent-gold);
-  color: #000;
-  border: none;
-  padding: 10px 40px;
+#fr-status {
   font-family: var(--font-scifi);
+  font-size: 1.5rem;
   font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s;
+  color: #fff;
 }
 
-#mancala-close-help:hover {
+.fr-piece {
+  position: absolute;
+  cursor: grab;
+  transition: transform 0.1s, box-shadow 0.2s;
+  z-index: 10;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-repeat: no-repeat;
+  touch-action: none;
+}
+
+.fr-piece:active {
+  cursor: grabbing;
+  z-index: 100 !important;
+  box-shadow: 0 0 20px var(--glow-cyan);
   transform: scale(1.05);
-  box-shadow: var(--glow-gold);
+}
+
+.fr-piece.snapped {
+  cursor: default;
+  pointer-events: none;
+  z-index: 5 !important;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 10px var(--accent-gold-dim);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+}
+
+.fr-slot {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+  z-index: 1;
+}
+
+#fr-victory-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-panel-solid);
+  border: 2px solid var(--accent-gold);
+  padding: 50px;
+  text-align: center;
+  z-index: 300;
+  border-radius: 8px;
+  pointer-events: auto;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), var(--glow-gold);
+}
+
+#fr-victory-modal h2 {
+  font-family: var(--font-scifi);
+  font-size: 3rem;
+  color: var(--accent-gold);
+  margin-bottom: 30px;
+}
+
+.fr-victory-buttons button {
+  padding: 15px 30px;
+  margin: 0 10px;
+  font-family: var(--font-scifi);
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.fr-victory-buttons button:hover {
+  background: var(--accent-cyan);
+  color: #000;
+  box-shadow: var(--glow-cyan);
 }
 
 /* Scale UI down roughly by half for mobile landscape */
+
 @media screen and (max-width: 1000px) and (orientation: landscape) {
   html {
     /* Scale down the base rem font-size which drives everything else */

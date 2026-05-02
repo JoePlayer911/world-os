@@ -8,10 +8,15 @@ let currentGameIslandId = null;
 let activeTargetEl = null;
 let remainingItems = 0;
 
-
+const getAssetUrl = (url) => {
+  if (url && url.startsWith('/assets/')) {
+    return import.meta.env.BASE_URL + url.substring(1);
+  }
+  return url;
+};
 
 export function startNusantacraft() {
-  const islands = Object.keys(dioramaData).filter(id => id !== 'taiwan');
+  const islands = Object.keys(dioramaData);
   const randomIsland = islands[Math.floor(Math.random() * islands.length)];
   currentGameIslandId = randomIsland;
   
@@ -29,10 +34,8 @@ export function startNusantacraft() {
   document.getElementById('nc-ui').classList.remove('hidden');
   document.getElementById('nc-victory-modal').classList.add('hidden');
   
-  // Bind global click listener for clicking on diorama targets
-  // It's attached to the container so it works for dynamically injected targets
   const container = document.getElementById('diorama-layers-container');
-  container.removeEventListener('click', handleDioramaClick); // prevent duplicates
+  container.removeEventListener('click', handleDioramaClick);
   container.addEventListener('click', handleDioramaClick);
   
   buildInventory(randomIsland);
@@ -49,7 +52,6 @@ function handleDioramaClick(e) {
     return;
   }
   
-  // If clicking an already selected target, deselect it
   if (activeTargetEl === target) {
     target.classList.remove('nc-target-selected');
     activeTargetEl = null;
@@ -57,12 +59,10 @@ function handleDioramaClick(e) {
     return;
   }
   
-  // Deselect previous
   if (activeTargetEl) {
     activeTargetEl.classList.remove('nc-target-selected');
   }
   
-  // Select new
   activeTargetEl = target;
   target.classList.add('nc-target-selected');
   playSound('select');
@@ -72,38 +72,37 @@ function buildInventory(correctIslandId) {
   const track = document.getElementById('nc-inventory-track');
   track.innerHTML = '';
   
-  const correctLayerData = dioramaData[correctIslandId].layers.filter(
-    l => l.url && !l.id.startsWith('bg-')
-  );
-  remainingItems = correctLayerData.length;
+  const correctData = dioramaData[correctIslandId];
+  const correctSprites = correctData.sprites.map(s => ({
+    url: `${correctData.basePath}/${s.file}`,
+    title: s.title
+  }));
+  remainingItems = correctSprites.length;
   
-  // Build a pool of all interactive layers
-  let allLayers = [];
-  Object.entries(dioramaData).forEach(([islandId, island]) => {
-    if (islandId === 'taiwan') return; // Exclude Taiwan layers from game pool
-    island.layers.forEach(layer => {
-      if (layer.url && !layer.id.startsWith('bg-')) {
-        allLayers.push(layer);
-      }
+  // Build pool of all sprites across all locations
+  let allSprites = [];
+  Object.values(dioramaData).forEach(loc => {
+    loc.sprites.forEach(s => {
+      allSprites.push({
+        url: `${loc.basePath}/${s.file}`,
+        title: s.title
+      });
     });
   });
   
-  // Gather items for inventory: correct ones + random distractors
-  const inventoryItems = [...correctLayerData];
+  // Gather items: correct ones + random distractors
+  const inventoryItems = [...correctSprites];
   
-  // Fill until 15 items
-  while (inventoryItems.length < 15) {
-    const randomDecoy = allLayers[Math.floor(Math.random() * allLayers.length)];
-    // Make sure we don't duplicate (though duplicates are fine if it's the exact same object, but let's avoid it if it's the same URL)
+  while (inventoryItems.length < 15 && allSprites.length > 0) {
+    const randomDecoy = allSprites[Math.floor(Math.random() * allSprites.length)];
     if (!inventoryItems.find(i => i.url === randomDecoy.url)) {
       inventoryItems.push(randomDecoy);
     }
   }
   
-  // Shuffle array
+  // Shuffle
   inventoryItems.sort(() => Math.random() - 0.5);
   
-  // Render html
   inventoryItems.forEach(itemData => {
     const slot = document.createElement('div');
     slot.className = 'nc-slot';
@@ -111,13 +110,9 @@ function buildInventory(correctIslandId) {
     const sprite = document.createElement('div');
     sprite.className = 'nc-draggable-sprite';
     sprite.setAttribute('data-url', itemData.url);
-    // Resolve URL using exact same logic as diorama.js
-    const resolvedUrl = (itemData.url && itemData.url.startsWith('/assets/')) 
-      ? import.meta.env.BASE_URL + itemData.url.substring(1) 
-      : itemData.url;
+    const resolvedUrl = getAssetUrl(itemData.url);
     sprite.style.backgroundImage = `url(${resolvedUrl})`;
     
-    // Bind click event instead of drag events
     sprite.addEventListener('click', () => {
       handleTrayItemClick(sprite, itemData.url);
     });
@@ -137,33 +132,27 @@ function handleTrayItemClick(spriteEl, itemUrl) {
   const requiredUrl = activeTargetEl.getAttribute('data-expected-url');
   
   if (requiredUrl === itemUrl) {
-    // Success!
     handleSuccess(spriteEl, activeTargetEl);
   } else {
-    // Fail
     handleFail();
   }
 }
 
 function handleSuccess(spriteEl, dropZoneEl) {
-  // Turn the drop zone into the actual visual sprite layer
   dropZoneEl.className = 'diorama-layer'; 
   dropZoneEl.style.animation = 'none';
   dropZoneEl.style.border = 'none';
-  dropZoneEl.innerHTML = ''; // clear hint text
+  dropZoneEl.innerHTML = '';
   dropZoneEl.style.backgroundColor = 'transparent';
   
   const resolvedUrl = spriteEl.style.backgroundImage;
   dropZoneEl.style.backgroundImage = resolvedUrl;
   
-  // Make sprite disappear from tray
   spriteEl.style.opacity = '0';
   spriteEl.style.pointerEvents = 'none';
   
-  // Deselect target
   activeTargetEl = null;
   
-  // Decrement
   remainingItems--;
   if (remainingItems <= 0) {
     playSound('victory');
@@ -194,7 +183,6 @@ function showVictory() {
 
 // Global binds
 document.addEventListener('DOMContentLoaded', () => {
-  // Just in case it's loaded early
   const btnPlay = document.getElementById('nc-btn-playagain');
   if (btnPlay) {
     btnPlay.addEventListener('click', () => {
@@ -209,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnOrbit.addEventListener('click', () => {
       playSound('click');
       document.getElementById('nc-ui').classList.add('hidden');
-      document.getElementById('diorama-exit-btn').click(); // trigger natural exit
+      document.getElementById('diorama-exit-btn').click();
     });
   }
 });

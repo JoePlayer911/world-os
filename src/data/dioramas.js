@@ -1,191 +1,271 @@
-// src/data/dioramas.js
-// Configuration for the 2.5D Interactive Dioramas
+// src/data/dioramas.js — World Tour diorama configs
+// Each location just lists its sprites (no bg). Layout is computed algorithmically.
+// sprites[]: { file, title, desc }
+
+const P = "/assets/Places";
 
 export const dioramaData = {
-  sumatra: {
-    title: "SUMATERA",
-    bgColor: "#2E5A88",
-    layers: [
-      {
-        id: "bg-jawa", type: "image", url: "/assets/jawa/jawa-background.jpeg", depth: 0.1, colorPlaceholder: "#224A6D", width: "110%", top: "0", left: "0", bgSize: "cover", bgPosition: "bottom center"
-      },
-      {
-        id: "mid-rumah-gadang",
-        type: "image",
-        url: "/assets/sumatra/sumatra-house.png",
-        depth: 0.12, // Landmark
-        colorPlaceholder: "#6B1D1D",
-        width: "100%", height: "100%", top: "2%", left: "-5%",
-        hotspots: [
-          {
-            title: "Rumah Gadang",
-            desc: "The traditional house of the Minangkabau people, known for its dramatic curved roof structure that resembles buffalo horns. The house is lifted to prevent wild animals to get inside.",
-            top: "50%", left: "50%"
-          }
-        ]
-      },
-      {
-        id: "fore-characters",
-        type: "image",
-        url: "/assets/sumatra/sumatra-people.png",
-        depth: 0.8, // People
-        colorPlaceholder: "#2A8A3D",
-        width: "50%", height: "70%", top: "30%", left: "40%",
-        hotspots: [
-          {
-            title: "Traditional Attire",
-            desc: "The colorful and intricate traditional clothing worn during ceremonies and weddings in Sumatera.",
-            top: "50%", left: "50%"
-          }
-        ]
-      },
-      {
-        id: "fore-tiger",
-        type: "image",
-        url: "/assets/sumatra/tiger.png",
-        depth: 1.0, // Animals
-        colorPlaceholder: "#D4771C",
-        width: "35%", height: "35%", top: "65%", left: "70%",
-        hotspots: [
-          {
-            title: "Sumatran Tiger",
-            desc: "The critically endangered Sumatran Tiger is the smallest surviving tiger subspecies, distinguished by heavy black stripes.",
-            top: "50%", left: "50%"
-          }
-        ]
-      },
-      {
-        id: "mid-rafflesia",
-        type: "image",
-        url: "/assets/sumatra/rafflesia.png",
-        depth: 0.4, // Nature
-        colorPlaceholder: "#A81111",
-        width: "50%", height: "50%", top: "55%", left: "-5%",
-        hotspots: [
-          {
-            title: "Rafflesia Arnoldii",
-            desc: "The largest individual flower on Earth, emitting a foul odor to attract pollinating insects. Stinky!",
-            top: "50%", left: "50%"
-          }
-        ]
-      }
-    ]
-  },
-  kalimantan: {
-    title: "KALIMANTAN",
-    bgColor: "#3E6B89",
-    layers: [
-      {
-        id: "bg-forest", type: "image", url: "/assets/jawa/jawa-background.jpeg", depth: 0.1, colorPlaceholder: "#2C4F66", width: "110%", top: "0", left: "0", bgSize: "cover", bgPosition: "bottom center"
-      },
-      {
-        id: "volcano", type: "image", url: "/assets/kalimantan/volcano.webp", depth: 0.12, colorPlaceholder: "#2C4F66", width: "30%", height: "40%", top: "35%", left: "70%"
-      },
-      {
-        id: "no-volcano", type: "image", url: "/assets/kalimantan/non.webp", depth: 0.12, colorPlaceholder: "transparent", width: "10%", height: "15%", top: "45%", left: "80%", className: "volcano-hover",
-        hotspots: [{ title: "No Volcanoes", desc: "Unlike other major Indonesian islands, Kalimantan has no active volcanoes and barely any earthquake.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "river", type: "image", url: "/assets/kalimantan/river.webp", depth: 0.11, colorPlaceholder: "#2C4F66", width: "50%", height: "50%", top: "40%", left: "-8%",
-        hotspots: [{ title: "River System", desc: "The vital waterways that serve as the main transportation and lifeblood for communities.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "mid-longhouse", type: "image", url: "/assets/kalimantan/kalimantan-house.png", depth: 0.12, colorPlaceholder: "#8A3F33", width: "70%", height: "60%", top: "30%", left: "8%",
-        hotspots: [
-          { title: "Dayak Longhouse", desc: "A traditional long house serving as the center of village life for the Dayak people.", top: "50%", left: "50%" }
-        ]
-      },
-      {
-        id: "fore-dayak", type: "image", url: "/assets/kalimantan/kalimantan-people.webp", depth: 0.8, colorPlaceholder: "#E59E5C", width: "30%", height: "60%", top: "35%", left: "55%",
-        hotspots: [
-          { title: "Dayak Culture", desc: "The indigenous people of Borneo, known for their rich oral history, ancient traditions, and vibrant clothing.", top: "50%", left: "50%" }
-        ]
-      },
-      {
-        id: "fore-snake", type: "image", url: "/assets/kalimantan/snake.webp", depth: 0.9, colorPlaceholder: "#3C6E47", width: "20%", height: "30%", top: "65%", left: "10%",
-        hotspots: [{ title: "Forest Snake", desc: "Snakes. Lots of snakes. Never touch them.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-crocodile", type: "image", url: "/assets/kalimantan/alligator.png", depth: 1.0, colorPlaceholder: "#3C6E47", width: "40%", height: "40%", top: "75%", left: "40%",
-        hotspots: [
-          { title: "River Crocodile", desc: "Kalimantan's vast river systems are home to many species, including the crocodile. They are very dangerous.", width: "150%", height: "150%", top: "30%", left: "50%" }
-        ]
-      }
-    ]
-  },
-  sulawesi: {
-    title: "SULAWESI",
-    bgColor: "#2C6099",
-    layers: [
-      { id: "bg-coast", type: "image", url: "/assets/sulawesi/sulawesi-background.webp", depth: 0.1, colorPlaceholder: "#1F4A7A", width: "100%", height: "100%", top: "0", left: "0" },
-      {
-        id: "mid-tongkonan", type: "image", url: "/assets/sulawesi/sulawesi-house.png", depth: 0.12, colorPlaceholder: "#4A3B32", width: "80%", height: "90%", top: "10%", left: "3%",
-        hotspots: [{ title: "Tongkonan", desc: "The ancestral house of the Torajan people, has a boat-shaped roof.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-dancer", type: "image", url: "/assets/sulawesi/sulawesi-people.webp", depth: 0.8, colorPlaceholder: "#B02727", width: "40%", height: "70%", top: "35%", left: "55%",
-        hotspots: [{ title: "Traditional Dance", desc: "Sulawesi is home to numerous ethnic groups, each with profound dance and artistic traditions.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-fan", type: "image", url: "/assets/sulawesi/fan.webp", depth: 1.0, colorPlaceholder: "#1F4A7A", width: "20%", height: "20%", top: "43%", left: "72%",
-        hotspots: [{ title: "Fan Dance", desc: "The infamous fan dance", top: "50%", left: "50%" }]
-      }
-    ]
-  },
-  jawa: {
-    title: "JAWA",
-    bgColor: "#4D7896",
-    layers: [
-      { id: "bg-city-temple", type: "image", url: "/assets/jawa/jawa-background.jpeg", depth: 0.1, colorPlaceholder: "#355973", width: "300%", top: "0", left: "0", bgSize: "cover", bgPosition: "bottom center" },
-      {
-        id: "mid-monas", type: "image", url: "/assets/jawa/jawa-house.png", depth: 0.12, colorPlaceholder: "#E0E0E0", width: "70%", height: "70%", top: "26%", left: "15%",
-        hotspots: [{ title: "Joglo", desc: "Traditional JavaneseW house.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "mid-tugu", type: "image", url: "/assets/jawa/tugu-jogja.png", depth: 0.5, colorPlaceholder: "#E0E0E0", width: "80%", height: "80%", top: "20%", left: "-10%",
-        hotspots: [{ title: "Tugu Jogja", desc: "A historical landmark and monument in Yogyakarta.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-wayang", type: "image", url: "/assets/jawa/jawa-wayang.png", depth: 0.8, colorPlaceholder: "#8A5C33", width: "25%", height: "50%", top: "40%", left: "0%",
-        hotspots: [{ title: "Wayang Kulit", desc: "A traditional form of puppet-shadow play originally found in the cultures of Java.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-batik", type: "image", url: "/assets/jawa/jawa-batik.webp", depth: 0.85, colorPlaceholder: "#492F24", width: "35%", height: "40%", top: "50%", left: "70%",
-        hotspots: [{ title: "Batik", desc: "A traditional Indonesian technique of wax-resist dyeing applied to whole cloth.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-people", type: "image", url: "/assets/jawa/jawa-people.png", depth: 0.9, colorPlaceholder: "#492F24", width: "45%", height: "65%", top: "45%", left: "42%",
-        hotspots: [{ title: "Kebaya", desc: "Traditional upper garment traditionally worn by women.", top: "50%", left: "50%" }]
-      }
-    ]
-  },
-  papua: {
-    title: "PAPUA",
-    bgColor: "#477FB8",
-    layers: [
-      { id: "bg-valley", type: "image", url: "/assets/papua/papua-background.jpg", depth: 0.1, colorPlaceholder: "#2B5682", width: "100%", height: "100%", top: "0", left: "0" },
-      {
-        id: "mid-honai", type: "image", url: "/assets/papua/papua-house.png", depth: 0.12, colorPlaceholder: "#5A4429", width: "50%", height: "50%", top: "35%", left: "5%",
-        hotspots: [{ title: "Honai", desc: "The traditional circular house of the Dani people of Papua, built without windows to keep out the cold and high, round roof to ventilate hot air.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-dance", type: "image", url: "/assets/papua/papua-people.png", depth: 0.8, colorPlaceholder: "#963B2A", width: "45%", height: "80%", top: "20%", left: "50%",
-        hotspots: [{ title: "Papuan Dance", desc: "Traditional ceremonial dances that often mimic nature and celebrate communal ties.", top: "50%", left: "50%" }]
-      },
-      {
-        id: "fore-bird", type: "image", url: "/assets/papua/papua-cendrawasih.webp", depth: 1.0, colorPlaceholder: "#E5C142", width: "35%", height: "45%", top: "10%", left: "45%",
-        hotspots: [{ title: "Cendrawasih", desc: "Famous for the spectacular plumage of its males, native to the forests of Papua.", top: "50%", left: "50%" }]
-      }
-    ]
-  },
+  // === ASIA ===
   taiwan: {
-    title: "TAIWAN",
-    bgColor: "#2F6B56",
-    layers: [
-      {
-        id: "bg-taipei", type: "image", url: "/assets/taiwan/taipei_school.png", depth: 0.2, colorPlaceholder: "#1F4C3B", width: "100%", height: "100%", top: "0", left: "0",
-        hotspots: [{ title: "Jhu-Wei Elementary", desc: "Oh look, it's our school!", top: "50%", left: "50%" }]
-      }
+    title: "TAIWAN", bgColor: "#2F6B56",
+    basePath: `${P}/亞洲/TAIWAN`,
+    sprites: [
+      { file: "BUILDING.png", title: "Taipei 101", desc: "Once the world's tallest building, an icon of modern Taiwan." },
+      { file: "FOOD.png", title: "Taiwanese Cuisine", desc: "From bubble tea to beef noodle soup, Taiwan is a food lover's paradise." },
+      { file: "FLAG.png", title: "Flag of Taiwan", desc: "The flag of the Republic of China." }
+    ]
+  },
+  japan: {
+    title: "JAPAN", bgColor: "#3B2040",
+    basePath: `${P}/亞洲/JAPAN`,
+    sprites: [
+      { file: "ARCHITECT.png", title: "Japanese Architecture", desc: "Traditional shrines and temples blending with futuristic cityscapes." },
+      { file: "FOOD.png", title: "Japanese Cuisine", desc: "Sushi, ramen, and tempura — Japanese food is an art form." },
+      { file: "FLAG.png", title: "Flag of Japan", desc: "The Hinomaru — the circle of the sun." }
+    ]
+  },
+  korea: {
+    title: "SOUTH KOREA", bgColor: "#1A3A5C",
+    basePath: `${P}/亞洲/KOREA`,
+    sprites: [
+      { file: "BUILDING.png", title: "Korean Palace", desc: "Historic palaces that survived centuries of history." },
+      { file: "BIMBIMBAO.png", title: "Bibimbap", desc: "A signature Korean mixed rice dish with vegetables and gochujang." },
+      { file: "Flag_of_South_Korea.png", title: "Taegeukgi", desc: "The South Korean flag with yin-yang and trigrams." }
+    ]
+  },
+  china: {
+    title: "CHINA", bgColor: "#8B1A1A",
+    basePath: `${P}/亞洲/CHINA`,
+    sprites: [
+      { file: "ARCHITECTURE.png", title: "Chinese Architecture", desc: "From the Great Wall to the Forbidden City — millennia of grandeur." },
+      { file: "FOOD.png", title: "Chinese Cuisine", desc: "From dim sum to Peking duck — one of the world's greatest culinary traditions." },
+      { file: "Flag_of_China.png", title: "Flag of China", desc: "The five-starred red flag of the People's Republic." }
+    ]
+  },
+  hongkong: {
+    title: "HONG KONG", bgColor: "#1A2A4A",
+    basePath: `${P}/亞洲/HONGKONG`,
+    sprites: [
+      { file: "hong-kong-building-architecture-building-high-rise-buildings-in-hong-kong-eb4f4349fd9a20ab77cf9b515a0837a2.png", title: "Hong Kong Skyline", desc: "One of the most iconic skylines in the world, along Victoria Harbour." },
+      { file: "DIMSUM.png", title: "Dim Sum", desc: "A Cantonese tradition of small steamed dishes served with tea." },
+      { file: "Flag_of_Hong_Kong.svg.png", title: "Flag of Hong Kong", desc: "The Bauhinia blakeana flower emblem." }
+    ]
+  },
+  macao: {
+    title: "MACAO", bgColor: "#2A4A3A",
+    basePath: `${P}/亞洲/MACAO`,
+    sprites: [
+      { file: "BUILDING.png", title: "Ruins of St. Paul's", desc: "The iconic facade of the 17th-century Portuguese church." },
+      { file: "FOOD.png", title: "Macanese Cuisine", desc: "A unique fusion of Portuguese and Chinese culinary traditions." },
+      { file: "FLAG.png", title: "Flag of Macao", desc: "The lotus flower flag of Macao SAR." }
+    ]
+  },
+  india: {
+    title: "INDIA", bgColor: "#B85C1A",
+    basePath: `${P}/亞洲/INDIA`,
+    sprites: [
+      { file: "BUILDING.png", title: "Taj Mahal", desc: "A monument to eternal love and one of the New Seven Wonders of the World." },
+      { file: "FOOD.png", title: "Indian Cuisine", desc: "A world of curries, naan, biryani, and aromatic spices." },
+      { file: "FLAG.png", title: "Flag of India", desc: "The tricolor with the Ashoka Chakra." }
+    ]
+  },
+  indonesia: {
+    title: "INDONESIA", bgColor: "#2E5A38",
+    basePath: `${P}/亞洲/INDONESIA`,
+    sprites: [
+      { file: "BUILDING.png", title: "Indonesian Architecture", desc: "From Borobudur to traditional Joglo houses across the archipelago." },
+      { file: "FOOD.png", title: "Indonesian Cuisine", desc: "Nasi goreng, satay, and rendang — a paradise of flavors." },
+      { file: "Flag_of_Indonesia.svg.png", title: "Flag of Indonesia", desc: "The red and white Sang Merah Putih." }
+    ]
+  },
+  vietnam: {
+    title: "VIETNAM", bgColor: "#2A5A2A",
+    basePath: `${P}/亞洲/VIETNAM`,
+    sprites: [
+      { file: "BUILDING.png", title: "Vietnamese Landmark", desc: "Ancient pagodas and French colonial architecture blend together." },
+      { file: "FOOD.png", title: "Vietnamese Cuisine", desc: "Pho, banh mi, and spring rolls — fresh and full of flavor." },
+      { file: "Flag_of_Vietnam.svg.png", title: "Flag of Vietnam", desc: "The golden star on red." }
+    ]
+  },
+  cambodia: {
+    title: "CAMBODIA", bgColor: "#5A3A1A",
+    basePath: `${P}/亞洲/CAMBODIA`,
+    sprites: [
+      { file: "png-clipart-low-angle-view-of-temple-angkor-wat-royal-palace-phnom-penh-tonlxe9-sap-national-museum-of-cambodia-mekong-cambodia-s-famous-royal-palace-building-royal-crown.png", title: "Angkor Wat", desc: "The largest religious monument in the world, a masterpiece of Khmer architecture." },
+      { file: "pngtree-khmer-food-cambodian-lunch-diet-photo-png-image_16475167.png", title: "Khmer Cuisine", desc: "Traditional Cambodian dishes featuring rice, fish, and fresh herbs." },
+      { file: "Flag_of_Cambodia.svg.png", title: "Flag of Cambodia", desc: "The Angkor Wat-bearing flag of the Kingdom." }
+    ]
+  },
+  laos: {
+    title: "LAOS", bgColor: "#2A4A2A",
+    basePath: `${P}/亞洲/LAOS`,
+    sprites: [
+      { file: "PAGODA.png", title: "Pha That Luang", desc: "The golden stupa — the most important national monument of Laos." },
+      { file: "FOOD.png", title: "Lao Cuisine", desc: "Sticky rice, laap, and tam mak hoong — simple yet deeply flavorful." },
+      { file: "FLAG.png", title: "Flag of Laos", desc: "The white circle on blue and red stripes." }
+    ]
+  },
+  mongolia: {
+    title: "MONGOLIA", bgColor: "#4A5A3A",
+    basePath: `${P}/亞洲/Mongolia`,
+    sprites: [
+      { file: "building.png", title: "Mongolian Ger", desc: "The portable felt dwelling of the nomadic Mongolian herders." },
+      { file: "noodle.png", title: "Mongolian Noodles", desc: "Hearty noodle soups and dumplings for the harsh steppe winters." },
+      { file: "flag.png", title: "Flag of Mongolia", desc: "The Soyombo symbol on red and blue." }
+    ]
+  },
+  north_korea: {
+    title: "NORTH KOREA", bgColor: "#2A2A3A",
+    basePath: `${P}/亞洲/NORTH KOREA`,
+    sprites: [
+      { file: "building.png", title: "Pyongyang Architecture", desc: "Monumental socialist architecture unlike anywhere else on Earth." },
+      { file: "cold noodle.png", title: "Naengmyeon", desc: "Cold buckwheat noodles — a signature dish of Pyongyang." },
+      { file: "flag.png", title: "Flag of DPRK", desc: "The red star flag of the Democratic People's Republic." }
+    ]
+  },
+
+  // === EUROPE ===
+  france: {
+    title: "FRANCE", bgColor: "#1A2A5A",
+    basePath: `${P}/歐洲/法國`,
+    sprites: [
+      { file: "eiffel_tower.png", title: "Eiffel Tower", desc: "The iron lady of Paris — the most visited paid monument in the world." },
+      { file: "louvre_museum.png", title: "Louvre Museum", desc: "The world's largest art museum and home to the Mona Lisa." },
+      { file: "croissant.png", title: "Croissant", desc: "The iconic buttery French pastry, a breakfast staple." }
+    ]
+  },
+  uk: {
+    title: "UNITED KINGDOM", bgColor: "#1A1A3A",
+    basePath: `${P}/歐洲/英國`,
+    sprites: [
+      { file: "big_ben.png", title: "Big Ben", desc: "The famous clock tower at the Houses of Parliament in London." },
+      { file: "afternoon_tea_tradition.png", title: "Afternoon Tea", desc: "A quintessentially British tradition since the 1840s." },
+      { file: "europian_robin.png", title: "European Robin", desc: "Britain's beloved national bird with its distinctive red breast." }
+    ]
+  },
+  germany: {
+    title: "GERMANY", bgColor: "#3A3A1A",
+    basePath: `${P}/歐洲/德國`,
+    sprites: [
+      { file: "brandenburg_gate.png", title: "Brandenburg Gate", desc: "Berlin's most famous landmark, a symbol of German reunification." },
+      { file: "bratwurst.png", title: "Bratwurst", desc: "Germany's beloved grilled sausage, a street food icon." }
+    ]
+  },
+  italy: {
+    title: "ITALY", bgColor: "#3A2A1A",
+    basePath: `${P}/歐洲/意大利`,
+    sprites: [
+      { file: "colosseum.png", title: "Colosseum", desc: "The ancient Roman amphitheatre — once home to gladiator battles." },
+      { file: "pizza.png", title: "Pizza", desc: "Born in Naples, now loved worldwide — the ultimate comfort food." }
+    ]
+  },
+  spain: {
+    title: "SPAIN", bgColor: "#5A1A1A",
+    basePath: `${P}/歐洲/西班牙`,
+    sprites: [
+      { file: "sagrada_familia.png", title: "Sagrada Familia", desc: "Gaudí's unfinished masterpiece basilica in Barcelona." },
+      { file: "flamenco.png", title: "Flamenco", desc: "A passionate art form combining guitar, song, dance, and emotion." },
+      { file: "paella.png", title: "Paella", desc: "Spain's famous rice dish from Valencia, rich with saffron." },
+      { file: "golden_eagle.png", title: "Golden Eagle", desc: "A majestic bird of prey soaring over the Iberian Peninsula." },
+      { file: "spanish_fighting_bull.png", title: "Spanish Bull", desc: "The iconic symbol of Spain's controversial bullfighting tradition." }
+    ]
+  },
+
+  // === AMERICAS ===
+  north_america: {
+    title: "NORTH AMERICA", bgColor: "#1A3A5A",
+    basePath: `${P}/美洲/北美洲`,
+    sprites: [
+      { file: "Bald eagle.jpg", title: "Bald Eagle", desc: "The national bird of the United States, a symbol of freedom." },
+      { file: "Pretzel.png", title: "Pretzel", desc: "A twisted bread snack popular across North America." }
+    ]
+  },
+  central_america: {
+    title: "CENTRAL AMERICA", bgColor: "#1A4A4A",
+    basePath: `${P}/美洲/中美洲`,
+    sprites: [
+      { file: "Statue of liberty.jpg", title: "Statue of Liberty", desc: "A gift from France, the universal symbol of freedom and democracy." },
+      { file: "Costa Rica.webp", title: "Costa Rica", desc: "A tropical paradise of biodiversity and pura vida lifestyle." }
+    ]
+  },
+  south_america: {
+    title: "SOUTH AMERICA", bgColor: "#2A4A2A",
+    basePath: `${P}/美洲/南美洲`,
+    sprites: [
+      { file: "Christ statue Rio.webp", title: "Christ the Redeemer", desc: "The colossal Art Deco statue overlooking Rio de Janeiro." },
+      { file: "Bunuelos.png", title: "Buñuelos", desc: "A beloved Latin American fried dough treat." }
+    ]
+  },
+
+  // === AFRICA ===
+  egypt: {
+    title: "EGYPT", bgColor: "#5A4A1A",
+    basePath: `${P}/非洲/埃及`,
+    sprites: [
+      { file: "Egypt Landmark.png", title: "Great Pyramids", desc: "The last surviving Wonder of the Ancient World." },
+      { file: "Vegetable Korma.webp", title: "Egyptian Cuisine", desc: "A rich, creamy curry enjoyed across North Africa and the Middle East." }
+    ]
+  },
+  south_africa: {
+    title: "SOUTH AFRICA", bgColor: "#2A3A2A",
+    basePath: `${P}/非洲/南非`,
+    sprites: [
+      { file: "Voortrekker Monument.png", title: "Voortrekker Monument", desc: "A massive granite structure commemorating the pioneer history." },
+      { file: "Jollof rice.png", title: "Jollof Rice", desc: "A West African one-pot rice dish loved across the continent." }
+    ]
+  },
+  nigeria: {
+    title: "NIGERIA", bgColor: "#1A3A1A",
+    basePath: `${P}/非洲/奈及利亞`,
+    sprites: [
+      { file: "Nigerian Dwarf Goat.png", title: "Nigerian Dwarf Goat", desc: "A small domestic goat breed originating from West Africa." },
+      { file: "Jollof rice.png", title: "Jollof Rice", desc: "Nigeria's beloved spiced tomato rice — a national treasure." }
+    ]
+  },
+  morocco: {
+    title: "MOROCCO", bgColor: "#5A3A2A",
+    basePath: `${P}/非洲/摩洛哥`,
+    sprites: [
+      { file: "Koutobia mosque minaret.png", title: "Koutoubia Mosque", desc: "The largest mosque in Marrakesh with its iconic minaret." },
+      { file: "Tajine.png", title: "Tagine", desc: "A slow-cooked stew named after the conical clay pot it's made in." },
+      { file: "Camel.png", title: "Camel", desc: "The ship of the desert, essential to Moroccan life for centuries." }
+    ]
+  },
+  kenya: {
+    title: "KENYA", bgColor: "#3A4A2A",
+    basePath: `${P}/非洲/肯亞`,
+    sprites: [
+      { file: "Hippopotamus_.png", title: "Hippopotamus", desc: "One of Africa's most dangerous animals, found in Kenya's rivers." },
+      { file: "Kenyan Ugali.webp", title: "Ugali", desc: "A staple cornmeal dish eaten across East Africa." }
+    ]
+  },
+  ethiopia: {
+    title: "ETHIOPIA", bgColor: "#4A3A2A",
+    basePath: `${P}/非洲/衣索比亞`,
+    sprites: [
+      { file: "Rock City_.png", title: "Rock-Hewn Churches", desc: "Lalibela's medieval churches carved directly from volcanic rock." },
+      { file: "Ethiopiam Injera Flatbread.png", title: "Injera", desc: "A spongy sourdough flatbread — the foundation of every Ethiopian meal." }
+    ]
+  },
+
+  // === OCEANIA ===
+  australia: {
+    title: "AUSTRALIA", bgColor: "#2A4A5A",
+    basePath: `${P}/澳洲/澳大利亚`,
+    sprites: [
+      { file: "sydney_opera_house.png", title: "Sydney Opera House", desc: "An architectural masterpiece and UNESCO World Heritage Site." },
+      { file: "uluru_ayers_rock.png", title: "Uluru", desc: "A sacred sandstone monolith in the heart of the Australian outback." },
+      { file: "koala.png", title: "Koala", desc: "An adorable marsupial that sleeps up to 22 hours a day." },
+      { file: "kangaroo.png", title: "Kangaroo", desc: "Australia's iconic marsupial, found nowhere else on Earth." }
+    ]
+  },
+  new_zealand: {
+    title: "NEW ZEALAND", bgColor: "#1A4A3A",
+    basePath: `${P}/澳洲/紐西蘭`,
+    sprites: [
+      { file: "hobbiton.png", title: "Hobbiton", desc: "The real-life movie set from The Lord of the Rings in Matamata." },
+      { file: "kiwi_bird.png", title: "Kiwi Bird", desc: "A flightless nocturnal bird — New Zealand's national icon." },
+      { file: "silver_fern.png", title: "Silver Fern", desc: "New Zealand's beloved national symbol, the ponga fern." }
     ]
   }
 };

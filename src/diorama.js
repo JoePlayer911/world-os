@@ -1,5 +1,6 @@
 // src/diorama.js
 import { dioramaData } from './data/dioramas.js';
+import { islandsData } from './data/islands.js';
 import { resetGlobeView } from './globe.js';
 
 let isDioramaActive = false;
@@ -27,16 +28,13 @@ export function initDioramaSystem() {
   document.addEventListener('mousemove', (e) => {
     if (!isDioramaActive || isDioramaGameMode || isDioramaFocused) return;
     
-    // Calculate normalized coords (-1 to 1)
     const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
 
-    // Shift layers
     const layers = document.querySelectorAll('.diorama-layer');
     layers.forEach(layer => {
       const speed = parseFloat(layer.getAttribute('data-speed')) || 0;
-      // Closer objects move more
-      const moveX = mouseX * speed * -100; // max shift in px
+      const moveX = mouseX * speed * -100;
       const moveY = mouseY * speed * -50; 
       
       layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
@@ -86,8 +84,46 @@ export function initDioramaSystem() {
   });
 }
 
+/**
+ * Algorithmic layout engine.
+ * Given N sprites, each gets viewWidth/N horizontal space.
+ * Placed left-to-right, vertically centered.
+ * 
+ * Example with 4 sprites on a 1920x1080 screen:
+ *   slotWidth = 1920/4 = 480
+ *   sprite 0: centerX = 240,  centerY = 540
+ *   sprite 1: centerX = 720,  centerY = 540
+ *   sprite 2: centerX = 1200, centerY = 540
+ *   sprite 3: centerX = 1680, centerY = 540
+ */
+function computeLayout(spriteCount) {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const slotWidth = vw / spriteCount;
+  const centerY = vh / 2;
+  
+  const positions = [];
+  for (let i = 0; i < spriteCount; i++) {
+    const centerX = slotWidth * i + slotWidth / 2;
+    positions.push({
+      centerX,
+      centerY,
+      slotWidth,
+      // Each sprite is sized to fit within its slot with some padding
+      maxWidth: slotWidth * 0.85,
+      maxHeight: vh * 0.7,
+      // Depth increases left→right for parallax (back sprites on left, front on right)
+      depth: 0.2 + (i / spriteCount) * 0.6
+    });
+  }
+  return positions;
+}
+
 export function openDiorama(islandId, isGameMode = false) {
   const data = dioramaData[islandId];
+  const islandInfo = islandsData.find(i => i.id === islandId);
+  const continent = islandInfo ? islandInfo.continent : 'asia';
+
   if (!data) {
     console.warn("No diorama data for:", islandId);
     return;
@@ -102,128 +138,103 @@ export function openDiorama(islandId, isGameMode = false) {
   // Set UI
   document.getElementById('diorama-title').textContent = data.title;
   bgLayer.style.backgroundColor = data.bgColor;
+  const bgUrl = getAssetUrl(`/assets/Places/Backgrounds/${continent}_bg.png`);
+  bgLayer.style.backgroundImage = `url('${bgUrl}')`;
+  bgLayer.style.backgroundSize = 'cover';
+  bgLayer.style.backgroundPosition = 'center';
   document.getElementById('diorama-annotation').classList.add('hidden');
 
-  // Build layers
+  // Build layers algorithmically
   container.innerHTML = '';
-  data.layers.forEach(layerData => {
-    // If it's the background layer, we just use the global bg layer for simplicity
-    if (layerData.id.startsWith('bg-')) {
-      if (layerData.url) {
-        bgLayer.style.backgroundImage = `url(${getAssetUrl(layerData.url)})`;
-        bgLayer.style.backgroundColor = 'transparent';
-        if (layerData.bgSize) bgLayer.style.backgroundSize = layerData.bgSize;
-        if (layerData.bgPosition) bgLayer.style.backgroundPosition = layerData.bgPosition;
-      } else {
-        bgLayer.style.backgroundImage = 'none';
-        bgLayer.style.backgroundColor = layerData.colorPlaceholder || data.bgColor;
-      }
-      return; 
-    }
+  const sprites = data.sprites;
+  const layout = computeLayout(sprites.length);
 
+  sprites.forEach((spriteData, i) => {
+    const pos = layout[i];
+    const url = `${data.basePath}/${spriteData.file}`;
+    const resolvedUrl = getAssetUrl(url);
+    
     const layerEl = document.createElement('div');
     layerEl.className = 'diorama-layer';
-    if (layerData.className) {
-      layerEl.classList.add(layerData.className);
-    }
-    layerEl.setAttribute('data-speed', layerData.depth.toString());
+    layerEl.setAttribute('data-speed', pos.depth.toString());
+    layerEl.style.zIndex = Math.floor(pos.depth * 100);
     
-    // Explicit Z-Index based on depth so background (lower number) is backwards
-    layerEl.style.zIndex = Math.floor(layerData.depth * 100);
+    // Size: fit within slot
+    layerEl.style.width = `${pos.maxWidth}px`;
+    layerEl.style.height = `${pos.maxHeight}px`;
+    // Position: center on computed slot center
+    layerEl.style.left = `${pos.centerX - pos.maxWidth / 2}px`;
+    layerEl.style.top = `${pos.centerY - pos.maxHeight / 2}px`;
     
-    // Set position and size
-    layerEl.style.width = layerData.width || '100%';
-    layerEl.style.height = layerData.height || '100%';
-    layerEl.style.top = layerData.top || '0';
-    layerEl.style.left = layerData.left || '0';
-    
-    if (layerData.bgSize) layerEl.style.backgroundSize = layerData.bgSize;
-    if (layerData.bgPosition) layerEl.style.backgroundPosition = layerData.bgPosition;
-
-    if (isGameMode && layerData.url) {
-      // Game Mode: Strip the image and convert into a placeholder drop zone
+    if (isGameMode) {
+      // Game Mode: placeholder drop zone
       layerEl.classList.add('nc-drop-target');
-      layerEl.setAttribute('data-expected-url', layerData.url);
-      
-      // Determine what it is for the hint (very basic mapping)
-      let typeHint = "Item";
-      if (layerData.id.includes('house') || layerData.id.includes('tongkonan') || layerData.id.includes('honai')) typeHint = "House";
-      else if (layerData.id.includes('people') || layerData.id.includes('dance')) typeHint = "People";
-      else if (layerData.id.includes('animal') || layerData.id.includes('tiger') || layerData.id.includes('crocodile') || layerData.id.includes('snake')) typeHint = "Animal";
-      
-      layerEl.setAttribute('data-hint', `${data.title} ${typeHint}`);
+      layerEl.setAttribute('data-expected-url', url);
+      layerEl.setAttribute('data-hint', `${data.title} — ${spriteData.title}`);
     } else {
-      // Normal Mode
-      if (layerData.url) {
-        layerEl.style.backgroundImage = `url(${getAssetUrl(layerData.url)})`;
-      } else {
-        layerEl.style.backgroundColor = layerData.colorPlaceholder;
-        layerEl.style.opacity = '0.7'; // So we can see through overlapping placeholders
-      }
+      // Normal Mode: show the image
+      layerEl.style.backgroundImage = `url(${resolvedUrl})`;
     }
 
-    // Add hotspots to this layer
-    if (layerData.hotspots && !isGameMode) {
-      layerData.hotspots.forEach(hs => {
-        const hsEl = document.createElement('div');
-        hsEl.className = 'diorama-hotspot';
-        // Position hotspot locally within the layer
-        hsEl.style.width = '60px';
-        hsEl.style.height = '60px';
-        hsEl.style.top = hs.top;
-        hsEl.style.left = hs.left;
-        hsEl.style.transform = 'translate(-50%, -50%)'; // center on coord
-        
-        hsEl.addEventListener('mouseenter', () => {
-          if (!isDioramaFocused) {
-            layerEl.style.transition = 'transform 0.3s ease, scale 0.3s ease';
-            layerEl.style.scale = '1.05';
-            hsEl.style.transform = 'translate(-50%, -50%) scale(1.2)';
-          }
-        });
-        
-        hsEl.addEventListener('mouseleave', () => {
-          if (!isDioramaFocused) {
-            layerEl.style.scale = '1';
-            hsEl.style.transform = 'translate(-50%, -50%) scale(1)';
-            setTimeout(() => {
-              if (!isDioramaFocused) layerEl.style.transition = 'transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1)';
-            }, 300);
-          }
-        });
-        
-        hsEl.addEventListener('click', (e) => {
-          e.stopPropagation();
-          isDioramaFocused = true;
-          
-          // Blur other layers
-          document.querySelectorAll('.diorama-layer').forEach(l => {
-             if (l !== layerEl && !l.classList.contains('bg-layer')) {
-                 l.style.transition = 'filter 0.5s ease';
-                 l.style.filter = 'blur(6px) brightness(0.6)';
-             }
-          });
-          
-          if (!layerEl.dataset.focused) {
-              layerEl.dataset.originalTop = layerEl.style.top || layerData.top;
-              layerEl.dataset.originalLeft = layerEl.style.left || layerData.left;
-              layerEl.dataset.originalTransform = layerEl.style.transform || 'translate(0px, 0px)';
-              layerEl.dataset.originalZIndex = layerEl.style.zIndex;
-          }
-          
-          layerEl.dataset.focused = 'true';
-          layerEl.style.transition = 'all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
-          layerEl.style.zIndex = '9999';
-          layerEl.style.top = '50%';
-          layerEl.style.left = '30%';
-          layerEl.style.transform = 'translate(-50%, -50%)';
-          layerEl.style.scale = '1.3';
-          
-          showAnnotation(hs.title, hs.desc);
-        });
-        
-        layerEl.appendChild(hsEl);
+    // Add hotspot
+    if (!isGameMode) {
+      const hsEl = document.createElement('div');
+      hsEl.className = 'diorama-hotspot';
+      hsEl.style.width = '60px';
+      hsEl.style.height = '60px';
+      hsEl.style.top = '50%';
+      hsEl.style.left = '50%';
+      hsEl.style.transform = 'translate(-50%, -50%)';
+      
+      hsEl.addEventListener('mouseenter', () => {
+        if (!isDioramaFocused) {
+          layerEl.style.transition = 'transform 0.3s ease, scale 0.3s ease';
+          layerEl.style.scale = '1.05';
+          hsEl.style.transform = 'translate(-50%, -50%) scale(1.2)';
+        }
       });
+      
+      hsEl.addEventListener('mouseleave', () => {
+        if (!isDioramaFocused) {
+          layerEl.style.scale = '1';
+          hsEl.style.transform = 'translate(-50%, -50%) scale(1)';
+          setTimeout(() => {
+            if (!isDioramaFocused) layerEl.style.transition = 'transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1)';
+          }, 300);
+        }
+      });
+      
+      hsEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isDioramaFocused = true;
+        
+        // Blur other layers
+        document.querySelectorAll('.diorama-layer').forEach(l => {
+           if (l !== layerEl && !l.classList.contains('bg-layer')) {
+               l.style.transition = 'filter 0.5s ease';
+               l.style.filter = 'blur(6px) brightness(0.6)';
+           }
+        });
+        
+        if (!layerEl.dataset.focused) {
+            layerEl.dataset.originalTop = layerEl.style.top;
+            layerEl.dataset.originalLeft = layerEl.style.left;
+            layerEl.dataset.originalTransform = layerEl.style.transform || 'translate(0px, 0px)';
+            layerEl.dataset.originalZIndex = layerEl.style.zIndex;
+        }
+        
+        layerEl.dataset.focused = 'true';
+        layerEl.style.transition = 'all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        layerEl.style.zIndex = '9999';
+        layerEl.style.top = '50%';
+        layerEl.style.left = '30%';
+        layerEl.style.transform = 'translate(-50%, -50%)';
+        layerEl.style.scale = '1.3';
+        
+        showAnnotation(spriteData.title, spriteData.desc);
+      });
+      
+      layerEl.appendChild(hsEl);
     }
 
     container.appendChild(layerEl);
