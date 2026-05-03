@@ -91,7 +91,7 @@ export const dioramaData = {
     title: "CAMBODIA", bgColor: "#5A3A1A",
     basePath: `${P}/Asia/CAMBODIA`,
     sprites: [
-      { file: "pngclipartlowangleviewoftempleangkorwatroyalpalacephnompenhtonlxe9sapnationalmuseumofcambodiamekongcambodiasfamousroyalpalacebuildingroyalcrown.png", title: "Angkor Wat", desc: "The largest religious monument in the world, a masterpiece of Khmer architecture." },
+      { file: "Royal_Palace.png", title: "Royal Palace", desc: "The stunning Royal Palace complex in Phnom Penh, a masterpiece of Khmer architecture." },
       { file: "pngtreekhmerfoodcambodianlunchdietphotopngimage_16475167.png", title: "Khmer Cuisine", desc: "Traditional Cambodian dishes featuring rice, fish, and fresh herbs." },
       { file: "Flag_of_Cambodia.svg.png", title: "Flag of Cambodia", desc: "The Angkor Wat-bearing flag of the Kingdom." }
     ]
@@ -176,7 +176,8 @@ export const dioramaData = {
     title: "NORTH AMERICA", bgColor: "#1A3A5A",
     basePath: `${P}/Americas/North_America`,
     sprites: [
-      { file: "Bald_eagle.jpg", title: "Bald Eagle", desc: "The national bird of the United States, a symbol of freedom." },
+      { file: "Statue_of_liberty.png", title: "Statue of Liberty", desc: "The universal symbol of freedom and democracy, standing tall in New York Harbour." },
+      { file: "Bald_eagle.png", title: "Bald Eagle", desc: "The national bird of the United States, a symbol of freedom." },
       { file: "Pretzel.png", title: "Pretzel", desc: "A twisted bread snack popular across North America." }
     ]
   },
@@ -184,15 +185,14 @@ export const dioramaData = {
     title: "CENTRAL AMERICA", bgColor: "#1A4A4A",
     basePath: `${P}/Americas/Central_America`,
     sprites: [
-      { file: "Statue_of_liberty.jpg", title: "Statue of Liberty", desc: "A gift from France, the universal symbol of freedom and democracy." },
-      { file: "Costa_Rica.webp", title: "Costa Rica", desc: "A tropical paradise of biodiversity and pura vida lifestyle." }
+      { file: "Central_American_Food.png", title: "Central American Cuisine", desc: "Delicious local food like tacos and pupusas that represent the vibrant culture of the region." }
     ]
   },
   south_america: {
     title: "SOUTH AMERICA", bgColor: "#2A4A2A",
     basePath: `${P}/Americas/South_America`,
     sprites: [
-      { file: "Christ_statue_Rio.webp", title: "Christ the Redeemer", desc: "The colossal Art Deco statue overlooking Rio de Janeiro." },
+      { file: "Christ_statue_Rio.png", title: "Christ the Redeemer", desc: "The colossal Art Deco statue overlooking Rio de Janeiro." },
       { file: "Bunuelos.png", title: "Buñuelos", desc: "A beloved Latin American fried dough treat." }
     ]
   },
@@ -203,7 +203,7 @@ export const dioramaData = {
     basePath: `${P}/Africa/Egypt`,
     sprites: [
       { file: "Egypt_Landmark.png", title: "Great Pyramids", desc: "The last surviving Wonder of the Ancient World." },
-      { file: "Vegetable_Korma.webp", title: "Egyptian Cuisine", desc: "A rich, creamy curry enjoyed across North Africa and the Middle East." }
+      { file: "Egyptian_Stew.png", title: "Egyptian Cuisine", desc: "A hearty, spiced stew reflecting the rich culinary heritage of the Nile." }
     ]
   },
   south_africa: {
@@ -211,7 +211,7 @@ export const dioramaData = {
     basePath: `${P}/Africa/South_Africa`,
     sprites: [
       { file: "Voortrekker_Monument.png", title: "Voortrekker Monument", desc: "A massive granite structure commemorating the pioneer history." },
-      { file: "Jollof_rice.png", title: "Jollof Rice", desc: "A West African one-pot rice dish loved across the continent." }
+      { file: "Yellow_Rice.png", title: "Cape Malay Yellow Rice", desc: "A fragrant, sweet and savoury rice dish with raisins, a staple of South African cuisine." }
     ]
   },
   nigeria: {
@@ -219,7 +219,7 @@ export const dioramaData = {
     basePath: `${P}/Africa/Nigeria`,
     sprites: [
       { file: "Nigerian_Dwarf_Goat.png", title: "Nigerian Dwarf Goat", desc: "A small domestic goat breed originating from West Africa." },
-      { file: "Jollof_rice.png", title: "Jollof Rice", desc: "Nigeria's beloved spiced tomato rice — a national treasure." }
+      { file: "Fried_Rice.png", title: "Nigerian Fried Rice", desc: "A popular celebratory dish of seasoned rice with vegetables and plantains." }
     ]
   },
   morocco: {
@@ -236,7 +236,7 @@ export const dioramaData = {
     basePath: `${P}/Africa/Kenya`,
     sprites: [
       { file: "Hippopotamus_.png", title: "Hippopotamus", desc: "One of Africa's most dangerous animals, found in Kenya's rivers." },
-      { file: "Kenyan_Ugali.webp", title: "Ugali", desc: "A staple cornmeal dish eaten across East Africa." }
+      { file: "Kenyan_Ugali.png", title: "Ugali", desc: "A staple cornmeal dish eaten across East Africa." }
     ]
   },
   ethiopia: {
