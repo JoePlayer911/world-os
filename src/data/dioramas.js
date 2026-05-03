@@ -8,7 +8,7 @@ export const dioramaData = {
   // === ASIA ===
   taiwan: {
     title: "TAIWAN", bgColor: "#2F6B56",
-    basePath: `${P}/亞洲/TAIWAN`,
+    basePath: `${P}/Asia/TAIWAN`,
     sprites: [
       { file: "BUILDING.png", title: "Taipei 101", desc: "Once the world's tallest building, an icon of modern Taiwan." },
       { file: "FOOD.png", title: "Taiwanese Cuisine", desc: "From bubble tea to beef noodle soup, Taiwan is a food lover's paradise." },
@@ -17,7 +17,7 @@ export const dioramaData = {
   },
   japan: {
     title: "JAPAN", bgColor: "#3B2040",
-    basePath: `${P}/亞洲/JAPAN`,
+    basePath: `${P}/Asia/JAPAN`,
     sprites: [
       { file: "ARCHITECT.png", title: "Japanese Architecture", desc: "Traditional shrines and temples blending with futuristic cityscapes." },
       { file: "FOOD.png", title: "Japanese Cuisine", desc: "Sushi, ramen, and tempura — Japanese food is an art form." },
@@ -26,7 +26,7 @@ export const dioramaData = {
   },
   korea: {
     title: "SOUTH KOREA", bgColor: "#1A3A5C",
-    basePath: `${P}/亞洲/KOREA`,
+    basePath: `${P}/Asia/KOREA`,
     sprites: [
       { file: "BUILDING.png", title: "Korean Palace", desc: "Historic palaces that survived centuries of history." },
       { file: "BIMBIMBAO.png", title: "Bibimbap", desc: "A signature Korean mixed rice dish with vegetables and gochujang." },
@@ -35,7 +35,7 @@ export const dioramaData = {
   },
   china: {
     title: "CHINA", bgColor: "#8B1A1A",
-    basePath: `${P}/亞洲/CHINA`,
+    basePath: `${P}/Asia/CHINA`,
     sprites: [
       { file: "ARCHITECTURE.png", title: "Chinese Architecture", desc: "From the Great Wall to the Forbidden City — millennia of grandeur." },
       { file: "FOOD.png", title: "Chinese Cuisine", desc: "From dim sum to Peking duck — one of the world's greatest culinary traditions." },
@@ -44,16 +44,16 @@ export const dioramaData = {
   },
   hongkong: {
     title: "HONG KONG", bgColor: "#1A2A4A",
-    basePath: `${P}/亞洲/HONGKONG`,
+    basePath: `${P}/Asia/HONGKONG`,
     sprites: [
-      { file: "hong-kong-building-architecture-building-high-rise-buildings-in-hong-kong-eb4f4349fd9a20ab77cf9b515a0837a2.png", title: "Hong Kong Skyline", desc: "One of the most iconic skylines in the world, along Victoria Harbour." },
+      { file: "hongkongbuildingarchitecturebuildinghighrisebuildingsinhongkongeb4f4349fd9a20ab77cf9b515a0837a2.png", title: "Hong Kong Skyline", desc: "One of the most iconic skylines in the world, along Victoria Harbour." },
       { file: "DIMSUM.png", title: "Dim Sum", desc: "A Cantonese tradition of small steamed dishes served with tea." },
       { file: "Flag_of_Hong_Kong.svg.png", title: "Flag of Hong Kong", desc: "The Bauhinia blakeana flower emblem." }
     ]
   },
   macao: {
     title: "MACAO", bgColor: "#2A4A3A",
-    basePath: `${P}/亞洲/MACAO`,
+    basePath: `${P}/Asia/MACAO`,
     sprites: [
       { file: "BUILDING.png", title: "Ruins of St. Paul's", desc: "The iconic facade of the 17th-century Portuguese church." },
       { file: "FOOD.png", title: "Macanese Cuisine", desc: "A unique fusion of Portuguese and Chinese culinary traditions." },
@@ -62,7 +62,7 @@ export const dioramaData = {
   },
   india: {
     title: "INDIA", bgColor: "#B85C1A",
-    basePath: `${P}/亞洲/INDIA`,
+    basePath: `${P}/Asia/INDIA`,
     sprites: [
       { file: "BUILDING.png", title: "Taj Mahal", desc: "A monument to eternal love and one of the New Seven Wonders of the World." },
       { file: "FOOD.png", title: "Indian Cuisine", desc: "A world of curries, naan, biryani, and aromatic spices." },
@@ -71,7 +71,7 @@ export const dioramaData = {
   },
   indonesia: {
     title: "INDONESIA", bgColor: "#2E5A38",
-    basePath: `${P}/亞洲/INDONESIA`,
+    basePath: `${P}/Asia/INDONESIA`,
     sprites: [
       { file: "BUILDING.png", title: "Indonesian Architecture", desc: "From Borobudur to traditional Joglo houses across the archipelago." },
       { file: "FOOD.png", title: "Indonesian Cuisine", desc: "Nasi goreng, satay, and rendang — a paradise of flavors." },
@@ -80,7 +80,7 @@ export const dioramaData = {
   },
   vietnam: {
     title: "VIETNAM", bgColor: "#2A5A2A",
-    basePath: `${P}/亞洲/VIETNAM`,
+    basePath: `${P}/Asia/VIETNAM`,
     sprites: [
       { file: "BUILDING.png", title: "Vietnamese Landmark", desc: "Ancient pagodas and French colonial architecture blend together." },
       { file: "FOOD.png", title: "Vietnamese Cuisine", desc: "Pho, banh mi, and spring rolls — fresh and full of flavor." },
@@ -89,16 +89,16 @@ export const dioramaData = {
   },
   cambodia: {
     title: "CAMBODIA", bgColor: "#5A3A1A",
-    basePath: `${P}/亞洲/CAMBODIA`,
+    basePath: `${P}/Asia/CAMBODIA`,
     sprites: [
-      { file: "png-clipart-low-angle-view-of-temple-angkor-wat-royal-palace-phnom-penh-tonlxe9-sap-national-museum-of-cambodia-mekong-cambodia-s-famous-royal-palace-building-royal-crown.png", title: "Angkor Wat", desc: "The largest religious monument in the world, a masterpiece of Khmer architecture." },
-      { file: "pngtree-khmer-food-cambodian-lunch-diet-photo-png-image_16475167.png", title: "Khmer Cuisine", desc: "Traditional Cambodian dishes featuring rice, fish, and fresh herbs." },
+      { file: "pngclipartlowangleviewoftempleangkorwatroyalpalacephnompenhtonlxe9sapnationalmuseumofcambodiamekongcambodiasfamousroyalpalacebuildingroyalcrown.png", title: "Angkor Wat", desc: "The largest religious monument in the world, a masterpiece of Khmer architecture." },
+      { file: "pngtreekhmerfoodcambodianlunchdietphotopngimage_16475167.png", title: "Khmer Cuisine", desc: "Traditional Cambodian dishes featuring rice, fish, and fresh herbs." },
       { file: "Flag_of_Cambodia.svg.png", title: "Flag of Cambodia", desc: "The Angkor Wat-bearing flag of the Kingdom." }
     ]
   },
   laos: {
     title: "LAOS", bgColor: "#2A4A2A",
-    basePath: `${P}/亞洲/LAOS`,
+    basePath: `${P}/Asia/LAOS`,
     sprites: [
       { file: "PAGODA.png", title: "Pha That Luang", desc: "The golden stupa — the most important national monument of Laos." },
       { file: "FOOD.png", title: "Lao Cuisine", desc: "Sticky rice, laap, and tam mak hoong — simple yet deeply flavorful." },
@@ -107,7 +107,7 @@ export const dioramaData = {
   },
   mongolia: {
     title: "MONGOLIA", bgColor: "#4A5A3A",
-    basePath: `${P}/亞洲/Mongolia`,
+    basePath: `${P}/Asia/Mongolia`,
     sprites: [
       { file: "building.png", title: "Mongolian Ger", desc: "The portable felt dwelling of the nomadic Mongolian herders." },
       { file: "noodle.png", title: "Mongolian Noodles", desc: "Hearty noodle soups and dumplings for the harsh steppe winters." },
@@ -116,10 +116,10 @@ export const dioramaData = {
   },
   north_korea: {
     title: "NORTH KOREA", bgColor: "#2A2A3A",
-    basePath: `${P}/亞洲/NORTH KOREA`,
+    basePath: `${P}/Asia/North_Korea`,
     sprites: [
       { file: "building.png", title: "Pyongyang Architecture", desc: "Monumental socialist architecture unlike anywhere else on Earth." },
-      { file: "cold noodle.png", title: "Naengmyeon", desc: "Cold buckwheat noodles — a signature dish of Pyongyang." },
+      { file: "cold_noodle.png", title: "Naengmyeon", desc: "Cold buckwheat noodles — a signature dish of Pyongyang." },
       { file: "flag.png", title: "Flag of DPRK", desc: "The red star flag of the Democratic People's Republic." }
     ]
   },
@@ -127,7 +127,7 @@ export const dioramaData = {
   // === EUROPE ===
   france: {
     title: "FRANCE", bgColor: "#1A2A5A",
-    basePath: `${P}/歐洲/法國`,
+    basePath: `${P}/Europe/France`,
     sprites: [
       { file: "eiffel_tower.png", title: "Eiffel Tower", desc: "The iron lady of Paris — the most visited paid monument in the world." },
       { file: "louvre_museum.png", title: "Louvre Museum", desc: "The world's largest art museum and home to the Mona Lisa." },
@@ -136,7 +136,7 @@ export const dioramaData = {
   },
   uk: {
     title: "UNITED KINGDOM", bgColor: "#1A1A3A",
-    basePath: `${P}/歐洲/英國`,
+    basePath: `${P}/Europe/United_Kingdom`,
     sprites: [
       { file: "big_ben.png", title: "Big Ben", desc: "The famous clock tower at the Houses of Parliament in London." },
       { file: "afternoon_tea_tradition.png", title: "Afternoon Tea", desc: "A quintessentially British tradition since the 1840s." },
@@ -145,7 +145,7 @@ export const dioramaData = {
   },
   germany: {
     title: "GERMANY", bgColor: "#3A3A1A",
-    basePath: `${P}/歐洲/德國`,
+    basePath: `${P}/Europe/Germany`,
     sprites: [
       { file: "brandenburg_gate.png", title: "Brandenburg Gate", desc: "Berlin's most famous landmark, a symbol of German reunification." },
       { file: "bratwurst.png", title: "Bratwurst", desc: "Germany's beloved grilled sausage, a street food icon." }
@@ -153,7 +153,7 @@ export const dioramaData = {
   },
   italy: {
     title: "ITALY", bgColor: "#3A2A1A",
-    basePath: `${P}/歐洲/意大利`,
+    basePath: `${P}/Europe/Italy`,
     sprites: [
       { file: "colosseum.png", title: "Colosseum", desc: "The ancient Roman amphitheatre — once home to gladiator battles." },
       { file: "pizza.png", title: "Pizza", desc: "Born in Naples, now loved worldwide — the ultimate comfort food." }
@@ -161,7 +161,7 @@ export const dioramaData = {
   },
   spain: {
     title: "SPAIN", bgColor: "#5A1A1A",
-    basePath: `${P}/歐洲/西班牙`,
+    basePath: `${P}/Europe/Spain`,
     sprites: [
       { file: "sagrada_familia.png", title: "Sagrada Familia", desc: "Gaudí's unfinished masterpiece basilica in Barcelona." },
       { file: "flamenco.png", title: "Flamenco", desc: "A passionate art form combining guitar, song, dance, and emotion." },
@@ -174,25 +174,25 @@ export const dioramaData = {
   // === AMERICAS ===
   north_america: {
     title: "NORTH AMERICA", bgColor: "#1A3A5A",
-    basePath: `${P}/美洲/北美洲`,
+    basePath: `${P}/Americas/North_America`,
     sprites: [
-      { file: "Bald eagle.jpg", title: "Bald Eagle", desc: "The national bird of the United States, a symbol of freedom." },
+      { file: "Bald_eagle.jpg", title: "Bald Eagle", desc: "The national bird of the United States, a symbol of freedom." },
       { file: "Pretzel.png", title: "Pretzel", desc: "A twisted bread snack popular across North America." }
     ]
   },
   central_america: {
     title: "CENTRAL AMERICA", bgColor: "#1A4A4A",
-    basePath: `${P}/美洲/中美洲`,
+    basePath: `${P}/Americas/Central_America`,
     sprites: [
-      { file: "Statue of liberty.jpg", title: "Statue of Liberty", desc: "A gift from France, the universal symbol of freedom and democracy." },
-      { file: "Costa Rica.webp", title: "Costa Rica", desc: "A tropical paradise of biodiversity and pura vida lifestyle." }
+      { file: "Statue_of_liberty.jpg", title: "Statue of Liberty", desc: "A gift from France, the universal symbol of freedom and democracy." },
+      { file: "Costa_Rica.webp", title: "Costa Rica", desc: "A tropical paradise of biodiversity and pura vida lifestyle." }
     ]
   },
   south_america: {
     title: "SOUTH AMERICA", bgColor: "#2A4A2A",
-    basePath: `${P}/美洲/南美洲`,
+    basePath: `${P}/Americas/South_America`,
     sprites: [
-      { file: "Christ statue Rio.webp", title: "Christ the Redeemer", desc: "The colossal Art Deco statue overlooking Rio de Janeiro." },
+      { file: "Christ_statue_Rio.webp", title: "Christ the Redeemer", desc: "The colossal Art Deco statue overlooking Rio de Janeiro." },
       { file: "Bunuelos.png", title: "Buñuelos", desc: "A beloved Latin American fried dough treat." }
     ]
   },
@@ -200,58 +200,58 @@ export const dioramaData = {
   // === AFRICA ===
   egypt: {
     title: "EGYPT", bgColor: "#5A4A1A",
-    basePath: `${P}/非洲/埃及`,
+    basePath: `${P}/Africa/Egypt`,
     sprites: [
-      { file: "Egypt Landmark.png", title: "Great Pyramids", desc: "The last surviving Wonder of the Ancient World." },
-      { file: "Vegetable Korma.webp", title: "Egyptian Cuisine", desc: "A rich, creamy curry enjoyed across North Africa and the Middle East." }
+      { file: "Egypt_Landmark.png", title: "Great Pyramids", desc: "The last surviving Wonder of the Ancient World." },
+      { file: "Vegetable_Korma.webp", title: "Egyptian Cuisine", desc: "A rich, creamy curry enjoyed across North Africa and the Middle East." }
     ]
   },
   south_africa: {
     title: "SOUTH AFRICA", bgColor: "#2A3A2A",
-    basePath: `${P}/非洲/南非`,
+    basePath: `${P}/Africa/South_Africa`,
     sprites: [
-      { file: "Voortrekker Monument.png", title: "Voortrekker Monument", desc: "A massive granite structure commemorating the pioneer history." },
-      { file: "Jollof rice.png", title: "Jollof Rice", desc: "A West African one-pot rice dish loved across the continent." }
+      { file: "Voortrekker_Monument.png", title: "Voortrekker Monument", desc: "A massive granite structure commemorating the pioneer history." },
+      { file: "Jollof_rice.png", title: "Jollof Rice", desc: "A West African one-pot rice dish loved across the continent." }
     ]
   },
   nigeria: {
     title: "NIGERIA", bgColor: "#1A3A1A",
-    basePath: `${P}/非洲/奈及利亞`,
+    basePath: `${P}/Africa/Nigeria`,
     sprites: [
-      { file: "Nigerian Dwarf Goat.png", title: "Nigerian Dwarf Goat", desc: "A small domestic goat breed originating from West Africa." },
-      { file: "Jollof rice.png", title: "Jollof Rice", desc: "Nigeria's beloved spiced tomato rice — a national treasure." }
+      { file: "Nigerian_Dwarf_Goat.png", title: "Nigerian Dwarf Goat", desc: "A small domestic goat breed originating from West Africa." },
+      { file: "Jollof_rice.png", title: "Jollof Rice", desc: "Nigeria's beloved spiced tomato rice — a national treasure." }
     ]
   },
   morocco: {
     title: "MOROCCO", bgColor: "#5A3A2A",
-    basePath: `${P}/非洲/摩洛哥`,
+    basePath: `${P}/Africa/Morocco`,
     sprites: [
-      { file: "Koutobia mosque minaret.png", title: "Koutoubia Mosque", desc: "The largest mosque in Marrakesh with its iconic minaret." },
+      { file: "Koutobia_mosque_minaret.png", title: "Koutoubia Mosque", desc: "The largest mosque in Marrakesh with its iconic minaret." },
       { file: "Tajine.png", title: "Tagine", desc: "A slow-cooked stew named after the conical clay pot it's made in." },
       { file: "Camel.png", title: "Camel", desc: "The ship of the desert, essential to Moroccan life for centuries." }
     ]
   },
   kenya: {
     title: "KENYA", bgColor: "#3A4A2A",
-    basePath: `${P}/非洲/肯亞`,
+    basePath: `${P}/Africa/Kenya`,
     sprites: [
       { file: "Hippopotamus_.png", title: "Hippopotamus", desc: "One of Africa's most dangerous animals, found in Kenya's rivers." },
-      { file: "Kenyan Ugali.webp", title: "Ugali", desc: "A staple cornmeal dish eaten across East Africa." }
+      { file: "Kenyan_Ugali.webp", title: "Ugali", desc: "A staple cornmeal dish eaten across East Africa." }
     ]
   },
   ethiopia: {
     title: "ETHIOPIA", bgColor: "#4A3A2A",
-    basePath: `${P}/非洲/衣索比亞`,
+    basePath: `${P}/Africa/Ethiopia`,
     sprites: [
-      { file: "Rock City_.png", title: "Rock-Hewn Churches", desc: "Lalibela's medieval churches carved directly from volcanic rock." },
-      { file: "Ethiopiam Injera Flatbread.png", title: "Injera", desc: "A spongy sourdough flatbread — the foundation of every Ethiopian meal." }
+      { file: "Rock_City_.png", title: "Rock-Hewn Churches", desc: "Lalibela's medieval churches carved directly from volcanic rock." },
+      { file: "Ethiopiam_Injera_Flatbread.png", title: "Injera", desc: "A spongy sourdough flatbread — the foundation of every Ethiopian meal." }
     ]
   },
 
   // === OCEANIA ===
   australia: {
     title: "AUSTRALIA", bgColor: "#2A4A5A",
-    basePath: `${P}/澳洲/澳大利亚`,
+    basePath: `${P}/Oceania/Australia`,
     sprites: [
       { file: "sydney_opera_house.png", title: "Sydney Opera House", desc: "An architectural masterpiece and UNESCO World Heritage Site." },
       { file: "uluru_ayers_rock.png", title: "Uluru", desc: "A sacred sandstone monolith in the heart of the Australian outback." },
@@ -261,7 +261,7 @@ export const dioramaData = {
   },
   new_zealand: {
     title: "NEW ZEALAND", bgColor: "#1A4A3A",
-    basePath: `${P}/澳洲/紐西蘭`,
+    basePath: `${P}/Oceania/New_Zealand`,
     sprites: [
       { file: "hobbiton.png", title: "Hobbiton", desc: "The real-life movie set from The Lord of the Rings in Matamata." },
       { file: "kiwi_bird.png", title: "Kiwi Bird", desc: "A flightless nocturnal bird — New Zealand's national icon." },
