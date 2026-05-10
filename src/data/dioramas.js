@@ -201,7 +201,7 @@ export const dioramaData = {
     title: "JAMAICA", bgColor: "#009B3A",
     basePath: `${P}/Americas/Jamaica`,
     sprites: [
-      { file: "Jerk chicken.png", title: "Jerk Chicken", desc: "A spicy and flavorful traditional Jamaican dish." },
+      { file: "Jerk_chicken.png", title: "Jerk Chicken", desc: "A spicy and flavorful traditional Jamaican dish." },
       { file: "png-transparent-hummingbird-transparency-bird-animals-fauna-tail-thumbnail.png", title: "Doctor Bird", desc: "The national bird of Jamaica, a beautiful hummingbird." }
     ]
   },

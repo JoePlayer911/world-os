@@ -152,7 +152,8 @@ export function openDiorama(islandId, isGameMode = false) {
   sprites.forEach((spriteData, i) => {
     const pos = layout[i];
     const url = `${data.basePath}/${spriteData.file}`;
-    const resolvedUrl = getAssetUrl(url);
+    // Ensure spaces in URLs are handled correctly if any remain
+    const resolvedUrl = getAssetUrl(url.replace(/ /g, '%20'));
     
     const layerEl = document.createElement('div');
     layerEl.className = 'diorama-layer';
