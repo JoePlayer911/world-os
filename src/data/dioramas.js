@@ -49,7 +49,7 @@ export const dioramaData = {
       { file: "hong-kong-building-architecture-building-high-rise-buildings-in-hong-kong-eb4f4349fd9a20ab77cf9b515a0837a2.png", title: "Hong Kong Skyline", desc: "One of the most iconic skylines in the world, along Victoria Harbour." },
       { file: "DIMSUM.png", title: "Dim Sum", desc: "A Cantonese tradition of small steamed dishes served with tea." },
       { file: "Flag_of_Hong_Kong.svg.png", title: "Flag of Hong Kong", desc: "The Bauhinia blakeana flower emblem." },
-      { file: "HK_Taxi_Review_1.webp", title: "Hong Kong Taxi", desc: "The iconic red Toyota Crown Comfort taxis that are a symbol of Hong Kong's streets." }
+      { file: "HK_Taxi_Review_1.png", title: "Hong Kong Taxi", desc: "The iconic red Toyota Crown Comfort taxis that are a symbol of Hong Kong's streets." }
     ]
   },
   macao: {
@@ -183,7 +183,7 @@ export const dioramaData = {
   },
   usa: {
     title: "UNITED STATES", bgColor: "#3C3B6E",
-    basePath: `${P}/Americas/United states`,
+    basePath: `${P}/Americas/United_States`,
     sprites: [
       { file: "png-transparent-statue-of-liberty-statue-of-liberty-new-york-harbor-staten-island-ferry-colossus-of-rhodes-the-new-colossus-statue-of-liberty-background-poster-stone-carving-united-states-thumbnail.png", title: "Statue of Liberty", desc: "A symbol of freedom and democracy in New York Harbor." },
       { file: "png-transparent-bald-eagle-eagle-with-transparency-free-animals-bald-eagle-fauna-thumbnail.png", title: "Bald Eagle", desc: "The national bird and animal of the United States." }
@@ -224,25 +224,25 @@ export const dioramaData = {
     title: "BRAZIL", bgColor: "#009739",
     basePath: `${P}/Americas/Brazil`,
     sprites: [
-      { file: "png-transparent-jesus-depiction-of-jesus-christianity-jesus-christ-jesus-christ-png-christian-art-robe-thumbnail.png", title: "Christ the Redeemer", desc: "The iconic statue of Jesus Christ in Rio de Janeiro." },
-      { file: "png-transparent-tiger-icon-tiger-cat-tiger-mammal-animals-cat-like-mammal-thumbnail.png", title: "Jaguar", desc: "The largest cat species in the Americas, a symbol of the Amazon." },
-      { file: "png-transparent-snow-leopard-felidae-leopard-mammal-image-file-formats-animals-thumbnail.png", title: "Snow Leopard", desc: "A high-altitude predator (Note: usually found in Asia, but featured in this collection)." }
+      { file: "png-transparent-jesus-depiction-of-jesus-christianity-jesus-christ-jesus-christ-png-christian-art-robe-thumbnail.png", title: "Christ the Redeemer", desc: "The world-famous statue overlooking Rio de Janeiro." },
+      { file: "png-transparent-tiger-icon-tiger-cat-tiger-mammal-animals-cat-like-mammal-thumbnail.png", title: "Tiger", desc: "A powerful tiger (Note: Though not native to Brazil, it represents the exotic wildlife often associated with tropical regions)." },
+      { file: "png-transparent-snow-leopard-felidae-leopard-mammal-image-file-formats-animals-thumbnail.png", title: "Leopard", desc: "A graceful leopard, another majestic big cat in this collection." }
     ]
   },
   chile: {
     title: "CHILE", bgColor: "#0039A6",
     basePath: `${P}/Americas/Chile`,
     sprites: [
-      { file: "png-transparent-moai-statues-moai-rano-raraku-rapa-iti-orongo-siem-reap-easter-island-chile-holidays-islands-stone-thumbnail.png", title: "Moai Statues", desc: "Ancient stone monoliths on Easter Island (Rapa Nui)." },
-      { file: "png-transparent-brown-hedgehog-background-lesions-in-laboratory-animals-dog-llama-pet-hedgehog-mammal-animals-desktop-wallpaper-thumbnail.png", title: "Hedgehog", desc: "A small spiny mammal (Note: featured in this collection)." }
+      { file: "png-transparent-moai-statues-moai-rano-raraku-rapa-iti-orongo-siem-reap-easter-island-chile-holidays-islands-stone-thumbnail.png", title: "Moai Statues", desc: "Mysterious stone monoliths on Easter Island (Rapa Nui)." },
+      { file: "png-transparent-brown-hedgehog-background-lesions-in-laboratory-animals-dog-llama-pet-hedgehog-mammal-animals-desktop-wallpaper-thumbnail.png", title: "Hedgehog", desc: "A small spiny mammal featured in this diorama's animal collection." }
     ]
   },
   argentina: {
     title: "ARGENTINA", bgColor: "#74ACDF",
     basePath: `${P}/Americas/Argentina`,
     sprites: [
-      { file: "png-transparent-modern-dance-performing-arts-painting-country-western-dance-painting-adult-painting-performing-arts-thumbnail.png", title: "Tango", desc: "A passionate dance and music genre that originated in the Rio de la Plata." },
-      { file: "png-transparent-apple-pie-treacle-tart-cuban-pastry-biscuit-cookie-biscuit-baked-goods-food-baking-thumbnail.png", title: "Argentine Pastries", desc: "Traditional sweet treats enjoyed across the country." }
+      { file: "png-transparent-modern-dance-performing-arts-painting-country-western-dance-painting-adult-painting-performing-arts-thumbnail.png", title: "Tango", desc: "The soulful and passionate dance that defines Argentine culture." },
+      { file: "png-transparent-apple-pie-treacle-tart-cuban-pastry-biscuit-cookie-biscuit-baked-goods-food-baking-thumbnail.png", title: "Pastries & Sweets", desc: "A variety of traditional baked goods enjoyed across Argentina." }
     ]
   },
 
