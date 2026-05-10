@@ -213,37 +213,103 @@ export const islandsData = [
   // 美洲 — AMERICAS
   // ==========================================
   {
-    id: "north_america",
-    name: "North America",
-    localName: "北美洲",
+    id: "canada",
+    name: "Canada",
+    localName: "Canada",
     continent: "americas",
-    lat: 38.9, lng: -98.48,
+    lat: 56.13, lng: -106.35,
+    color: "#ff4757",
+    population: "38.2 Million",
+    area: "9,984,670 km²",
+    description: "A vast North American nation known for its stunning natural landscapes, maple syrup, and friendly culture."
+  },
+  {
+    id: "usa",
+    name: "United States",
+    localName: "United States",
+    continent: "americas",
+    lat: 37.09, lng: -95.71,
     color: "#1e90ff",
-    population: "579 Million",
-    area: "24,709,000 km²",
-    description: "The land of bald eagles, pretzels, and iconic landmarks from coast to coast."
+    population: "331.9 Million",
+    area: "9,833,517 km²",
+    description: "A diverse nation of 50 states, home to the Statue of Liberty, Hollywood, and the bald eagle."
   },
   {
-    id: "central_america",
-    name: "Central America",
-    localName: "中美洲",
+    id: "mexico",
+    name: "Mexico",
+    localName: "México",
     continent: "americas",
-    lat: 15.0, lng: -86.24,
-    color: "#00cec9",
-    population: "183 Million",
-    area: "2,480,000 km²",
-    description: "A bridge between continents featuring lush rainforests, ancient ruins, and the Statue of Liberty's cultural reach."
+    lat: 23.63, lng: -102.55,
+    color: "#2ed573",
+    population: "126.7 Million",
+    area: "1,964,375 km²",
+    description: "A country rich in history, famous for its ancient ruins, vibrant festivals, and delicious tacos."
   },
   {
-    id: "south_america",
-    name: "South America",
-    localName: "南美洲",
+    id: "jamaica",
+    name: "Jamaica",
+    localName: "Jamaica",
     continent: "americas",
-    lat: -14.24, lng: -51.93,
-    color: "#fdcb6e",
-    population: "430 Million",
-    area: "17,840,000 km²",
-    description: "A continent of breathtaking extremes — from the Amazon rainforest to Christ the Redeemer in Rio."
+    lat: 18.1, lng: -77.29,
+    color: "#ffa502",
+    population: "2.8 Million",
+    area: "10,991 km²",
+    description: "A Caribbean island nation known for reggae music, beautiful beaches, and jerk chicken."
+  },
+  {
+    id: "colombia",
+    name: "Colombia",
+    localName: "Colombia",
+    continent: "americas",
+    lat: 4.57, lng: -74.29,
+    color: "#ffc107",
+    population: "51.3 Million",
+    area: "1,141,748 km²",
+    description: "A South American gem famous for its high-quality coffee, emeralds, and diverse wildlife."
+  },
+  {
+    id: "peru",
+    name: "Peru",
+    localName: "Perú",
+    continent: "americas",
+    lat: -9.19, lng: -75.01,
+    color: "#eb2f06",
+    population: "33.7 Million",
+    area: "1,285,216 km²",
+    description: "Home to the ancient Inca city of Machu Picchu and a rich culinary heritage."
+  },
+  {
+    id: "brazil",
+    name: "Brazil",
+    localName: "Brasil",
+    continent: "americas",
+    lat: -14.23, lng: -51.92,
+    color: "#2ecc71",
+    population: "214.3 Million",
+    area: "8,515,767 km²",
+    description: "The largest country in South America, home to the Amazon rainforest and the iconic Christ the Redeemer."
+  },
+  {
+    id: "chile",
+    name: "Chile",
+    localName: "Chile",
+    continent: "americas",
+    lat: -35.67, lng: -71.54,
+    color: "#0984e3",
+    population: "19.2 Million",
+    area: "756,096 km²",
+    description: "A long, narrow country on the edge of the Pacific, famous for Moai statues and diverse geography."
+  },
+  {
+    id: "argentina",
+    name: "Argentina",
+    localName: "Argentina",
+    continent: "americas",
+    lat: -38.41, lng: -63.61,
+    color: "#74b9ff",
+    population: "45.8 Million",
+    area: "2,780,400 km²",
+    description: "The land of tango, gauchos, and stunning Patagonian landscapes."
   },
 
   // ==========================================

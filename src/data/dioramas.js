@@ -46,9 +46,10 @@ export const dioramaData = {
     title: "HONG KONG", bgColor: "#1A2A4A",
     basePath: `${P}/Asia/HONGKONG`,
     sprites: [
-      { file: "hongkongbuildingarchitecturebuildinghighrisebuildingsinhongkongeb4f4349fd9a20ab77cf9b515a0837a2.png", title: "Hong Kong Skyline", desc: "One of the most iconic skylines in the world, along Victoria Harbour." },
+      { file: "hong-kong-building-architecture-building-high-rise-buildings-in-hong-kong-eb4f4349fd9a20ab77cf9b515a0837a2.png", title: "Hong Kong Skyline", desc: "One of the most iconic skylines in the world, along Victoria Harbour." },
       { file: "DIMSUM.png", title: "Dim Sum", desc: "A Cantonese tradition of small steamed dishes served with tea." },
-      { file: "Flag_of_Hong_Kong.svg.png", title: "Flag of Hong Kong", desc: "The Bauhinia blakeana flower emblem." }
+      { file: "Flag_of_Hong_Kong.svg.png", title: "Flag of Hong Kong", desc: "The Bauhinia blakeana flower emblem." },
+      { file: "HK_Taxi_Review_1.webp", title: "Hong Kong Taxi", desc: "The iconic red Toyota Crown Comfort taxis that are a symbol of Hong Kong's streets." }
     ]
   },
   macao: {
@@ -172,28 +173,76 @@ export const dioramaData = {
   },
 
   // === AMERICAS ===
-  north_america: {
-    title: "NORTH AMERICA", bgColor: "#1A3A5A",
-    basePath: `${P}/Americas/North_America`,
+  canada: {
+    title: "CANADA", bgColor: "#FF0000",
+    basePath: `${P}/Americas/Canada`,
     sprites: [
-      { file: "Statue_of_liberty.png", title: "Statue of Liberty", desc: "The universal symbol of freedom and democracy, standing tall in New York Harbour." },
-      { file: "Bald_eagle.png", title: "Bald Eagle", desc: "The national bird of the United States, a symbol of freedom." },
-      { file: "Pretzel.png", title: "Pretzel", desc: "A twisted bread snack popular across North America." }
+      { file: "png-transparent-red-maple-leaf-art-leaf-autumn-transparency-and-translucency-autumn-leaf-leaf-maple-leaf-leaves-thumbnail.png", title: "Maple Leaf", desc: "The national symbol of Canada, representing its vast forests." },
+      { file: "png-transparent-welcome-to-the-world-of-beavers-the-beaver-transparency-beaver-mammal-animals-carnivoran-thumbnail.png", title: "Beaver", desc: "Canada's national animal, known for its industrious dam-building." }
     ]
   },
-  central_america: {
-    title: "CENTRAL AMERICA", bgColor: "#1A4A4A",
-    basePath: `${P}/Americas/Central_America`,
+  usa: {
+    title: "UNITED STATES", bgColor: "#3C3B6E",
+    basePath: `${P}/Americas/United states`,
     sprites: [
-      { file: "Central_American_Food.png", title: "Central American Cuisine", desc: "Delicious local food like tacos and pupusas that represent the vibrant culture of the region." }
+      { file: "png-transparent-statue-of-liberty-statue-of-liberty-new-york-harbor-staten-island-ferry-colossus-of-rhodes-the-new-colossus-statue-of-liberty-background-poster-stone-carving-united-states-thumbnail.png", title: "Statue of Liberty", desc: "A symbol of freedom and democracy in New York Harbor." },
+      { file: "png-transparent-bald-eagle-eagle-with-transparency-free-animals-bald-eagle-fauna-thumbnail.png", title: "Bald Eagle", desc: "The national bird and animal of the United States." }
     ]
   },
-  south_america: {
-    title: "SOUTH AMERICA", bgColor: "#2A4A2A",
-    basePath: `${P}/Americas/South_America`,
+  mexico: {
+    title: "MEXICO", bgColor: "#006847",
+    basePath: `${P}/Americas/Mexico`,
     sprites: [
-      { file: "Christ_statue_Rio.png", title: "Christ the Redeemer", desc: "The colossal Art Deco statue overlooking Rio de Janeiro." },
-      { file: "Bunuelos.png", title: "Buñuelos", desc: "A beloved Latin American fried dough treat." }
+      { file: "Taco.png", title: "Mexican Tacos", desc: "A world-renowned staple of Mexican cuisine." },
+      { file: "Sombrero_.png", title: "Sombrero", desc: "A wide-brimmed hat that is an icon of Mexican culture." }
+    ]
+  },
+  jamaica: {
+    title: "JAMAICA", bgColor: "#009B3A",
+    basePath: `${P}/Americas/Jamaica`,
+    sprites: [
+      { file: "Jerk chicken.png", title: "Jerk Chicken", desc: "A spicy and flavorful traditional Jamaican dish." },
+      { file: "png-transparent-hummingbird-transparency-bird-animals-fauna-tail-thumbnail.png", title: "Doctor Bird", desc: "The national bird of Jamaica, a beautiful hummingbird." }
+    ]
+  },
+  colombia: {
+    title: "COLOMBIA", bgColor: "#FCD116",
+    basePath: `${P}/Americas/Colombia`,
+    sprites: [
+      { file: "png-transparent-coffee-beans-coffee-bean-cafe-coffee-beans-food-coffee-cocoa-bean-thumbnail.png", title: "Colombian Coffee", desc: "Colombia is world-famous for its high-quality coffee beans." },
+      { file: "png-transparent-duck-bird-goose-duck-animals-fauna-wildlife-thumbnail.png", title: "Tropical Bird", desc: "One of the many diverse bird species found in Colombia." }
+    ]
+  },
+  peru: {
+    title: "PERU", bgColor: "#D91023",
+    basePath: `${P}/Americas/Peru`,
+    sprites: [
+      { file: "png-transparent-inca-trail-to-machu-picchu-sacred-valley-aguas-calientes-peru-inca-empire-machu-picchu-background-location-aguas-calientes-peru-trekking-thumbnail.png", title: "Machu Picchu", desc: "The stunning 15th-century Inca citadel set high in the Andes." }
+    ]
+  },
+  brazil: {
+    title: "BRAZIL", bgColor: "#009739",
+    basePath: `${P}/Americas/Brazil`,
+    sprites: [
+      { file: "png-transparent-jesus-depiction-of-jesus-christianity-jesus-christ-jesus-christ-png-christian-art-robe-thumbnail.png", title: "Christ the Redeemer", desc: "The iconic statue of Jesus Christ in Rio de Janeiro." },
+      { file: "png-transparent-tiger-icon-tiger-cat-tiger-mammal-animals-cat-like-mammal-thumbnail.png", title: "Jaguar", desc: "The largest cat species in the Americas, a symbol of the Amazon." },
+      { file: "png-transparent-snow-leopard-felidae-leopard-mammal-image-file-formats-animals-thumbnail.png", title: "Snow Leopard", desc: "A high-altitude predator (Note: usually found in Asia, but featured in this collection)." }
+    ]
+  },
+  chile: {
+    title: "CHILE", bgColor: "#0039A6",
+    basePath: `${P}/Americas/Chile`,
+    sprites: [
+      { file: "png-transparent-moai-statues-moai-rano-raraku-rapa-iti-orongo-siem-reap-easter-island-chile-holidays-islands-stone-thumbnail.png", title: "Moai Statues", desc: "Ancient stone monoliths on Easter Island (Rapa Nui)." },
+      { file: "png-transparent-brown-hedgehog-background-lesions-in-laboratory-animals-dog-llama-pet-hedgehog-mammal-animals-desktop-wallpaper-thumbnail.png", title: "Hedgehog", desc: "A small spiny mammal (Note: featured in this collection)." }
+    ]
+  },
+  argentina: {
+    title: "ARGENTINA", bgColor: "#74ACDF",
+    basePath: `${P}/Americas/Argentina`,
+    sprites: [
+      { file: "png-transparent-modern-dance-performing-arts-painting-country-western-dance-painting-adult-painting-performing-arts-thumbnail.png", title: "Tango", desc: "A passionate dance and music genre that originated in the Rio de la Plata." },
+      { file: "png-transparent-apple-pie-treacle-tart-cuban-pastry-biscuit-cookie-biscuit-baked-goods-food-baking-thumbnail.png", title: "Argentine Pastries", desc: "Traditional sweet treats enjoyed across the country." }
     ]
   },
 
