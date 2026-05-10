@@ -151,7 +151,8 @@ export function openDiorama(islandId, isGameMode = false) {
 
   sprites.forEach((spriteData, i) => {
     const pos = layout[i];
-    const url = `${data.basePath}/${spriteData.file}`;
+    // Support both relative paths and absolute paths (starting with /)
+    const url = spriteData.file.startsWith('/') ? spriteData.file : `${data.basePath}/${spriteData.file}`;
     // Ensure spaces in URLs are handled correctly if any remain
     const resolvedUrl = getAssetUrl(url.replace(/ /g, '%20'));
     
